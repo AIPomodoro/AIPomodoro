@@ -27,7 +27,9 @@
 - A consumer would benefit from using our AI Pomodoro Timer because they will be able to manage their time more efficiently and stay focused/motivated during work sessions.
 
 ## Measures of Success
-- The AI Pomodoro Timer will be considered successful if it is able to accurately predict and create optimal work/break times for the user. We will measure the success of our AI Pomodoro Timer by tracking the number of users who sign up for the application, the number of users who use the application on a regular basis, and the number of users who provide positive feedback about the application.
-- We want to enable our users to be more productive as a number one priority. If we can achieve this goal, we will consider our application a success.
+- The AI Pomodoro Timer will be considered successful if it is able to accurately predict and create optimal work/break times for the user. We will measure the success of our AI Pomodoro Timer by a number of metrics including the number of users who create an account, the number of users who frequently use the application, and the number of users who provide positive feedback about the application. We will also measure the efficacy of our app based on user engagement time and the overall quality of their work sessions.
+- Our primary goal is to provide a tool that enables our users to be more productive. If we can achieve this goal, we will consider our application a success.
 
 # Technology
+
+We plan on implementing our solution using the full-stack web framework, RedwoodJS. Redwood based on React with a number of pre-installed packages for features like authentication and deployment to increase developer productivity.
