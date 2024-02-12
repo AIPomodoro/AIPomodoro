@@ -37,14 +37,17 @@ The model will be implemented with Pytorch and integrated into the backend of th
 ## Team
 Roles will rotate throughout the semester based on sprint planning.
 ### Daniel Mallett
-**Previous Experience**:
+#### Previous Experience:
  - Web Development experience with C#/.NET, React, and Angular
  - Undergraduate research on neuromorphic computing
-**Role**: Frontend Development
+#### Role: Frontend Development
+
 ### Braden Hechmer
-**Previous Experience**:
- - 
-**Role**: Backend Development
+
+#### Previous Experience:
+- 
+
+#### Role: Backend Development 
 
 ## Project Management
 ### Schedule:
