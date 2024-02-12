@@ -30,6 +30,29 @@
 - The AI Pomodoro Timer will be considered successful if it is able to accurately predict and create optimal work/break times for the user. We will measure the success of our AI Pomodoro Timer by a number of metrics including the number of users who create an account, the number of users who frequently use the application, and the number of users who provide positive feedback about the application. We will also measure the efficacy of our app based on user engagement time and the overall quality of their work sessions.
 - Our primary goal is to provide a tool that enables our users to be more productive. If we can achieve this goal, we will consider our application a success.
 
-# Technology
+## Technology
+We plan on implementing our solution using the full-stack web framework, RedwoodJS. Redwood is based on React with a number of pre-installed packages and added features. We expect this will simplify and speed up development.
+The model will be implemented with Pytorch and integrated into the backend of the application.
 
-We plan on implementing our solution using the full-stack web framework, RedwoodJS. Redwood based on React with a number of pre-installed packages for features like authentication and deployment to increase developer productivity.
+## Team
+Roles will rotate throughout the semester based on sprint planning.
+### Daniel Mallett
+**Previous Experience**:
+ - Web Development experience with C#/.NET, React, and Angular
+ - Undergraduate research on neuromorphic computing
+**Role**: Frontend Development
+### Braden Hechmer
+**Previous Experience**:
+ - 
+**Role**: Backend Development
+
+## Project Management
+### Schedule:
+We foresee being able to complete and deploy a minimally viable product by the end of the semester.
+In-person team meetings will be scheduled weekly where we will discuss sprint planning and track progess. Remote meetings (via Discord) will be scheduled as needed.   
+### Constraints
+The user data that will be collected will be minimal and we will provide complete transparancy and disclosure for the user. We are not anticipating any regulatory or legal constraints at this time.
+### Resources
+All of our data will be directly collected within our applictaion or come from open source sentiment analysis data sets.
+### Descoping
+In the event that we are not able to access necessary data, our product will certainly be less effective but will still provide all the core functionality of an ordinary pomodoro timer. It will continue to function and be useful.
