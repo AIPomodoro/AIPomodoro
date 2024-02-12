@@ -45,7 +45,8 @@ Roles will rotate throughout the semester based on sprint planning.
 ### Braden Hechmer
 
 #### Previous Experience:
-- 
+- Creating webapps using ML
+- Undergraduate research on neuromorphic computing
 
 #### Role: Backend Development 
 
