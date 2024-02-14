@@ -14,34 +14,34 @@ generator client {
   binaryTargets = "native"
 }
 
-
 model User {
-  id        Int       @id @default(autoincrement())
-  username  String    @unique
-  email     String    @unique
-  password  String
-  role      String?
-  profile   Profile?  
-  createdAt DateTime  @default(now())
+  id           Int           @id @default(autoincrement())
+  username     String        @unique
+  email        String        @unique
+  password     String
+  role         String?
+  profile      Profile?
+  createdAt    DateTime      @default(now())
+  JournalEntry JournalEntry?
 }
 
 model Profile {
-  id              Int             @id  @default(autoincrement())
-  userId          Int             @unique
-  user            User            @relation(fields: [userId], references: [id])
-  workDuration    Int
-  breakDuration   Int
-  journalEntries  JournalEntry[]
-  createdAt       DateTime        @default(now())
+  id             Int            @id @default(autoincrement())
+  userId         Int            @unique
+  user           User           @relation(fields: [userId], references: [id])
+  workDuration   Int
+  breakDuration  Int
+  journalEntries JournalEntry[]
+  createdAt      DateTime       @default(now())
 }
 
 model JournalEntry {
-  id        Int       @id @default(autoincrement())
-  userId    Int       @unique
+  id        Int      @id @default(autoincrement())
+  userId    Int      @unique
   profileId Int
-  user      User      @relation(fields: [userId], references: [id])
-  profile   Profile   @relation(fields: [profileId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
+  profile   Profile  @relation(fields: [profileId], references: [id])
   title     String
   content   String
-  createdAt DateTime  @default(now())
+  createdAt DateTime @default(now())
 }
