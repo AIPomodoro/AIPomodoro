@@ -9,7 +9,6 @@ export const QUERY = gql`
   query EditJournalEntryById($id: Int!) {
     journalEntry: journalEntry(id: $id) {
       id
-      userId
       profileId
       title
       content
@@ -24,7 +23,6 @@ const UPDATE_JOURNAL_ENTRY_MUTATION = gql`
   ) {
     updateJournalEntry(id: $id, input: $input) {
       id
-      userId
       profileId
       title
       content

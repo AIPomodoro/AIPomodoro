@@ -29,24 +29,24 @@ describe('profiles', () => {
     const result = await createProfile({
       input: {
         userId: scenario.profile.two.userId,
-        workDuration: 3991787,
-        breakDuration: 7708773,
+        workDuration: 956456,
+        breakDuration: 3965792,
       },
     })
 
     expect(result.userId).toEqual(scenario.profile.two.userId)
-    expect(result.workDuration).toEqual(3991787)
-    expect(result.breakDuration).toEqual(7708773)
+    expect(result.workDuration).toEqual(956456)
+    expect(result.breakDuration).toEqual(3965792)
   })
 
   scenario('updates a profile', async (scenario) => {
     const original = await profile({ id: scenario.profile.one.id })
     const result = await updateProfile({
       id: original.id,
-      input: { workDuration: 5825794 },
+      input: { workDuration: 9625479 },
     })
 
-    expect(result.workDuration).toEqual(5825794)
+    expect(result.workDuration).toEqual(9625479)
   })
 
   scenario('deletes a profile', async (scenario) => {

@@ -30,9 +30,6 @@ export const deleteJournalEntry = ({ id }) => {
 }
 
 export const JournalEntry = {
-  user: (_obj, { root }) => {
-    return db.journalEntry.findUnique({ where: { id: root?.id } }).user()
-  },
   profile: (_obj, { root }) => {
     return db.journalEntry.findUnique({ where: { id: root?.id } }).profile()
   },

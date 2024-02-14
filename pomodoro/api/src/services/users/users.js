@@ -33,7 +33,4 @@ export const User = {
   profile: (_obj, { root }) => {
     return db.user.findUnique({ where: { id: root?.id } }).profile()
   },
-  JournalEntry: (_obj, { root }) => {
-    return db.user.findUnique({ where: { id: root?.id } }).JournalEntry()
-  },
 }

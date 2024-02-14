@@ -7,7 +7,6 @@ export const schema = gql`
     role: String
     profile: Profile
     createdAt: DateTime!
-    JournalEntry: JournalEntry
   }
 
   type Query {

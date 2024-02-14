@@ -2,12 +2,12 @@ export const standard = defineScenario({
   profile: {
     one: {
       data: {
-        workDuration: 5000813,
-        breakDuration: 7088164,
+        workDuration: 8670645,
+        breakDuration: 4002410,
         user: {
           create: {
-            username: 'String8727603',
-            email: 'String8533063',
+            username: 'String7683825',
+            email: 'String5389613',
             password: 'String',
           },
         },
@@ -15,12 +15,12 @@ export const standard = defineScenario({
     },
     two: {
       data: {
-        workDuration: 1111420,
-        breakDuration: 7549294,
+        workDuration: 1679909,
+        breakDuration: 5836171,
         user: {
           create: {
-            username: 'String6272944',
-            email: 'String2189763',
+            username: 'String9139618',
+            email: 'String5596657',
             password: 'String',
           },
         },

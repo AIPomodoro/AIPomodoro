@@ -28,14 +28,12 @@ describe('journalEntries', () => {
   scenario('creates a journalEntry', async (scenario) => {
     const result = await createJournalEntry({
       input: {
-        userId: scenario.journalEntry.two.userId,
         profileId: scenario.journalEntry.two.profileId,
         title: 'String',
         content: 'String',
       },
     })
 
-    expect(result.userId).toEqual(scenario.journalEntry.two.userId)
     expect(result.profileId).toEqual(scenario.journalEntry.two.profileId)
     expect(result.title).toEqual('String')
     expect(result.content).toEqual('String')

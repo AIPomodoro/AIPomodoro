@@ -4,7 +4,6 @@ export const QUERY = gql`
   query FindJournalEntryById($id: Int!) {
     journalEntry: journalEntry(id: $id) {
       id
-      userId
       profileId
       title
       content

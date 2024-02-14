@@ -22,7 +22,6 @@ model User {
   role         String?
   profile      Profile?
   createdAt    DateTime      @default(now())
-  JournalEntry JournalEntry?
 }
 
 model Profile {
@@ -37,9 +36,7 @@ model Profile {
 
 model JournalEntry {
   id        Int      @id @default(autoincrement())
-  userId    Int      @unique
   profileId Int
-  user      User     @relation(fields: [userId], references: [id])
   profile   Profile  @relation(fields: [profileId], references: [id])
   title     String
   content   String

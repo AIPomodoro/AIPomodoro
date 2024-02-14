@@ -44,10 +44,6 @@ const JournalEntry = ({ journalEntry }) => {
               <td>{journalEntry.id}</td>
             </tr>
             <tr>
-              <th>User id</th>
-              <td>{journalEntry.userId}</td>
-            </tr>
-            <tr>
               <th>Profile id</th>
               <td>{journalEntry.profileId}</td>
             </tr>

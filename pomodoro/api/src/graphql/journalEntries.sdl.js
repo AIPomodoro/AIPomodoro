@@ -1,9 +1,7 @@
 export const schema = gql`
   type JournalEntry {
     id: Int!
-    userId: Int!
     profileId: Int!
-    user: User!
     profile: Profile!
     title: String!
     content: String!
@@ -16,14 +14,12 @@ export const schema = gql`
   }
 
   input CreateJournalEntryInput {
-    userId: Int!
     profileId: Int!
     title: String!
     content: String!
   }
 
   input UpdateJournalEntryInput {
-    userId: Int
     profileId: Int
     title: String
     content: String

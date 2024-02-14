@@ -40,7 +40,6 @@ const JournalEntriesList = ({ journalEntries }) => {
         <thead>
           <tr>
             <th>Id</th>
-            <th>User id</th>
             <th>Profile id</th>
             <th>Title</th>
             <th>Content</th>
@@ -52,7 +51,6 @@ const JournalEntriesList = ({ journalEntries }) => {
           {journalEntries.map((journalEntry) => (
             <tr key={journalEntry.id}>
               <td>{truncate(journalEntry.id)}</td>
-              <td>{truncate(journalEntry.userId)}</td>
               <td>{truncate(journalEntry.profileId)}</td>
               <td>{truncate(journalEntry.title)}</td>
               <td>{truncate(journalEntry.content)}</td>
