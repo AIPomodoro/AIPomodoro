@@ -5,7 +5,10 @@ export const QUERY = gql`
     user: user(id: $id) {
       id
       username
+      firstName
+      lastName
       email
+      phone
       password
       role
       createdAt

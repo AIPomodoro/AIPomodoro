@@ -41,7 +41,10 @@ const UsersList = ({ users }) => {
           <tr>
             <th>Id</th>
             <th>Username</th>
+            <th>First name</th>
+            <th>Last name</th>
             <th>Email</th>
+            <th>Phone</th>
             <th>Password</th>
             <th>Role</th>
             <th>Created at</th>
@@ -53,7 +56,10 @@ const UsersList = ({ users }) => {
             <tr key={user.id}>
               <td>{truncate(user.id)}</td>
               <td>{truncate(user.username)}</td>
+              <td>{truncate(user.firstName)}</td>
+              <td>{truncate(user.lastName)}</td>
               <td>{truncate(user.email)}</td>
+              <td>{truncate(user.phone)}</td>
               <td>{truncate(user.password)}</td>
               <td>{truncate(user.role)}</td>
               <td>{timeTag(user.createdAt)}</td>

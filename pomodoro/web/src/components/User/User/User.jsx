@@ -48,8 +48,20 @@ const User = ({ user }) => {
               <td>{user.username}</td>
             </tr>
             <tr>
+              <th>First name</th>
+              <td>{user.firstName}</td>
+            </tr>
+            <tr>
+              <th>Last name</th>
+              <td>{user.lastName}</td>
+            </tr>
+            <tr>
               <th>Email</th>
               <td>{user.email}</td>
+            </tr>
+            <tr>
+              <th>Phone</th>
+              <td>{user.phone}</td>
             </tr>
             <tr>
               <th>Password</th>
