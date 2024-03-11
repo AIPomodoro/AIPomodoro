@@ -11,9 +11,11 @@ import { Set, Router, Route } from '@redwoodjs/router'
 import TimerLayout from 'src/layouts/TimerLayout'
 import ScaffoldLayout from 'src/layouts/ScaffoldLayout'
 
+import { useAuth } from './auth'
+
 const Routes = () => {
   return (
-    <Router>
+    <Router useAuth={useAuth}>
       <Set wrap={TimerLayout}>
         <Route path="/" page={DashPage} name="dash" />
       </Set>
