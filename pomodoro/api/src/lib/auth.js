@@ -43,6 +43,7 @@ export const getCurrentUser = async (decoded) => {
   let user = await db.user.findUnique({
     where: { userId: decoded.sub },
   })
+  let profile
 
   if (!user) {
     //create new user
@@ -53,16 +54,20 @@ export const getCurrentUser = async (decoded) => {
     })
 
     //create new profile
-    await db.profile.create({
+    profile = await db.profile.create({
       data: {
         userId: user.id,
         workDuration: 25,
         breakDuration: 5,
       },
     })
+  } else {
+    profile = await db.profile.findUnique({
+      where: { userId: user.id },
+    })
   }
 
-  return user
+  return { user, profile }
   // return { decoded, roles, userProfile }
 }
 
