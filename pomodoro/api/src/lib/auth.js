@@ -35,11 +35,6 @@ export const getCurrentUser = async (decoded) => {
     return null
   }
 
-  // const roles = decoded[process.env.AUTH0_AUDIENCE + '/roles']
-  // if (roles) {
-  // return { ...decoded, roles }
-  // }
-
   let user = await db.user.findUnique({
     where: { userId: decoded.sub },
   })
@@ -57,8 +52,8 @@ export const getCurrentUser = async (decoded) => {
     profile = await db.profile.create({
       data: {
         userId: user.id,
-        workDuration: 25,
-        breakDuration: 5,
+        workDuration: 1500,
+        breakDuration: 300,
       },
     })
   } else {
@@ -68,7 +63,6 @@ export const getCurrentUser = async (decoded) => {
   }
 
   return { user, profile }
-  // return { decoded, roles, userProfile }
 }
 
 /**
