@@ -5,14 +5,17 @@ import { Transition } from '@headlessui/react'
 import { Link, routes } from '@redwoodjs/router'
 
 import { useAuth } from 'src/auth'
+
+import SettingsModal from '../SettingsModal/SettingsModal'
+
 const Navbar = () => {
   const { isAuthenticated, logIn, logOut } = useAuth()
-  // const [showDropdown, setShowDropdown] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false)
 
-  // const toggleDropdown = () => {
-  // setShowDropdown(!showDropdown)
-  // }
+  const toggleSettings = () => {
+    setIsSettingsOpen(!isSettingsOpen)
+  }
 
   return (
     <div>
@@ -25,15 +28,17 @@ const Navbar = () => {
                 src="https://upload.wikimedia.org/wikipedia/commons/6/6e/533-tomato.svg" //def change this
                 alt="Workflow"
               />
+              {/* TODO implement streak */}
               {isAuthenticated && <p>streak</p>}
             </div>
-
             <div className="flex items-center space-x-4">
               <div className="hidden items-center space-x-4 md:block">
-                <button className="h-10 w-20 rounded-md p-2 transition-all duration-150 ease-in-out hover:bg-gray-500">
+                <button
+                  onClick={toggleSettings}
+                  className="h-10 w-20 rounded-md p-2 transition-all duration-150 ease-in-out hover:bg-gray-500"
+                >
                   Settings
                 </button>
-
                 {isAuthenticated ? (
                   <>
                     <button className="h-10 w-20 rounded-md p-2 transition-all duration-150 ease-in-out hover:bg-gray-500">
@@ -61,7 +66,6 @@ const Navbar = () => {
                   </button>
                 )}
               </div>
-
               {/* Mobile menu button */}
               <div className="-mr-2 flex md:hidden">
                 <button
@@ -110,7 +114,6 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-
         {/* Mobile menu */}
         <Transition
           show={isOpen}
@@ -149,6 +152,7 @@ const Navbar = () => {
           )}
         </Transition>
       </nav>
+      <SettingsModal isOpen={isSettingsOpen} onClose={toggleSettings} />
     </div>
   )
 }
