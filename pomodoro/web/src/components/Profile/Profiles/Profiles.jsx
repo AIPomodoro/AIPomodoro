@@ -1,5 +1,6 @@
 import { Link, routes } from '@redwoodjs/router'
 import { useMutation } from '@redwoodjs/web'
+
 import { toast } from '@redwoodjs/web/toast'
 
 import { QUERY } from 'src/components/Profile/ProfilesCell'
@@ -40,10 +41,14 @@ const ProfilesList = ({ profiles }) => {
         <thead>
           <tr>
             <th>Id</th>
+            <th>Created at</th>
             <th>User id</th>
             <th>Work duration</th>
             <th>Break duration</th>
-            <th>Created at</th>
+            <th>Email</th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Phone</th>
             <th>&nbsp;</th>
           </tr>
         </thead>
@@ -51,10 +56,14 @@ const ProfilesList = ({ profiles }) => {
           {profiles.map((profile) => (
             <tr key={profile.id}>
               <td>{truncate(profile.id)}</td>
+              <td>{timeTag(profile.createdAt)}</td>
               <td>{truncate(profile.userId)}</td>
               <td>{truncate(profile.workDuration)}</td>
               <td>{truncate(profile.breakDuration)}</td>
-              <td>{timeTag(profile.createdAt)}</td>
+              <td>{truncate(profile.email)}</td>
+              <td>{truncate(profile.firstName)}</td>
+              <td>{truncate(profile.lastName)}</td>
+              <td>{truncate(profile.phone)}</td>
               <td>
                 <nav className="rw-table-actions">
                   <Link

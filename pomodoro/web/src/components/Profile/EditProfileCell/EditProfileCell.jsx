@@ -9,21 +9,30 @@ export const QUERY = gql`
   query EditProfileById($id: Int!) {
     profile: profile(id: $id) {
       id
+      createdAt
       userId
       workDuration
       breakDuration
-      createdAt
+      email
+      firstName
+      lastName
+      phone
     }
   }
 `
+
 const UPDATE_PROFILE_MUTATION = gql`
   mutation UpdateProfileMutation($id: Int!, $input: UpdateProfileInput!) {
     updateProfile(id: $id, input: $input) {
       id
+      createdAt
       userId
       workDuration
       breakDuration
-      createdAt
+      email
+      firstName
+      lastName
+      phone
     }
   }
 `

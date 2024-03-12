@@ -16,6 +16,7 @@ export const QUERY = gql`
     }
   }
 `
+
 const UPDATE_JOURNAL_ENTRY_MUTATION = gql`
   mutation UpdateJournalEntryMutation(
     $id: Int!

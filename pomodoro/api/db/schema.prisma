@@ -16,25 +16,24 @@ generator client {
 
 model User {
   id        Int      @id @default(autoincrement())
-  username  String   @unique
-  firstName String?
-  lastName  String?
-  email     String   @unique
-  phone     String?
-  password  String
-  role      String?
-  profile   Profile?
+  userId    String   @unique //Auth0.sub claim
   createdAt DateTime @default(now())
+  profile   Profile?
+  // profile   Profile?
 }
 
 model Profile {
   id             Int            @id @default(autoincrement())
+  createdAt      DateTime       @default(now())
   userId         Int            @unique
   user           User           @relation(fields: [userId], references: [id])
   workDuration   Int
   breakDuration  Int
+  email          String?
+  firstName      String?
+  lastName       String?
+  phone          String?
   journalEntries JournalEntry[]
-  createdAt      DateTime       @default(now())
 }
 
 model JournalEntry {

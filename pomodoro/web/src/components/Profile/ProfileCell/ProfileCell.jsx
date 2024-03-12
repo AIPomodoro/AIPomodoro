@@ -4,10 +4,14 @@ export const QUERY = gql`
   query FindProfileById($id: Int!) {
     profile: profile(id: $id) {
       id
+      createdAt
       userId
       workDuration
       breakDuration
-      createdAt
+      email
+      firstName
+      lastName
+      phone
     }
   }
 `

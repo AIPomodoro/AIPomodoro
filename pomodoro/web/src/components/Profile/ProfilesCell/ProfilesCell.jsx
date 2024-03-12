@@ -6,10 +6,14 @@ export const QUERY = gql`
   query FindProfiles {
     profiles {
       id
+      createdAt
       userId
       workDuration
       breakDuration
-      createdAt
+      email
+      firstName
+      lastName
+      phone
     }
   }
 `

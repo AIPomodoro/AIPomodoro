@@ -9,28 +9,17 @@ export const QUERY = gql`
   query EditUserById($id: Int!) {
     user: user(id: $id) {
       id
-      username
-      firstName
-      lastName
-      email
-      phone
-      password
-      role
+      userId
       createdAt
     }
   }
 `
+
 const UPDATE_USER_MUTATION = gql`
   mutation UpdateUserMutation($id: Int!, $input: UpdateUserInput!) {
     updateUser(id: $id, input: $input) {
       id
-      username
-      firstName
-      lastName
-      email
-      phone
-      password
-      role
+      userId
       createdAt
     }
   }

@@ -1,5 +1,7 @@
 import { AuthenticationError, ForbiddenError } from '@redwoodjs/graphql-server'
 
+import { db } from './db'
+
 /**
  * Represents the user attributes returned by the decoding the
  * Authentication provider's JWT together with an optional list of roles.
@@ -27,18 +29,41 @@ import { AuthenticationError, ForbiddenError } from '@redwoodjs/graphql-server'
  *   context information about the invocation such as IP Address
  * @returns RedwoodUser
  */
+
 export const getCurrentUser = async (decoded) => {
   if (!decoded) {
     return null
   }
 
-  const roles = decoded[process.env.AUTH0_AUDIENCE + '/roles']
+  // const roles = decoded[process.env.AUTH0_AUDIENCE + '/roles']
+  // if (roles) {
+  // return { ...decoded, roles }
+  // }
 
-  if (roles) {
-    return { ...decoded, roles }
+  let user = await db.user.findUnique({
+    where: { userId: decoded.sub },
+  })
+
+  if (!user) {
+    //create new user
+    user = await db.user.create({
+      data: {
+        userId: decoded.sub,
+      },
+    })
+
+    //create new profile
+    await db.profile.create({
+      data: {
+        userId: user.id,
+        workDuration: 25,
+        breakDuration: 5,
+      },
+    })
   }
 
-  return { ...decoded }
+  return user
+  // return { decoded, roles, userProfile }
 }
 
 /**

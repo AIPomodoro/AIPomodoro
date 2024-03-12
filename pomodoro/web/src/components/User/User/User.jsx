@@ -1,5 +1,6 @@
 import { Link, routes, navigate } from '@redwoodjs/router'
 import { useMutation } from '@redwoodjs/web'
+
 import { toast } from '@redwoodjs/web/toast'
 
 import { timeTag } from 'src/lib/formatters'
@@ -44,32 +45,8 @@ const User = ({ user }) => {
               <td>{user.id}</td>
             </tr>
             <tr>
-              <th>Username</th>
-              <td>{user.username}</td>
-            </tr>
-            <tr>
-              <th>First name</th>
-              <td>{user.firstName}</td>
-            </tr>
-            <tr>
-              <th>Last name</th>
-              <td>{user.lastName}</td>
-            </tr>
-            <tr>
-              <th>Email</th>
-              <td>{user.email}</td>
-            </tr>
-            <tr>
-              <th>Phone</th>
-              <td>{user.phone}</td>
-            </tr>
-            <tr>
-              <th>Password</th>
-              <td>{user.password}</td>
-            </tr>
-            <tr>
-              <th>Role</th>
-              <td>{user.role}</td>
+              <th>User id</th>
+              <td>{user.userId}</td>
             </tr>
             <tr>
               <th>Created at</th>

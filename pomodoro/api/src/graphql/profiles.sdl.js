@@ -1,12 +1,16 @@
 export const schema = gql`
   type Profile {
     id: Int!
+    createdAt: DateTime!
     userId: Int!
     user: User!
     workDuration: Int!
     breakDuration: Int!
+    email: String
+    firstName: String
+    lastName: String
+    phone: String
     journalEntries: [JournalEntry]!
-    createdAt: DateTime!
   }
 
   type Query {
@@ -18,12 +22,20 @@ export const schema = gql`
     userId: Int!
     workDuration: Int!
     breakDuration: Int!
+    email: String
+    firstName: String
+    lastName: String
+    phone: String
   }
 
   input UpdateProfileInput {
     userId: Int
     workDuration: Int
     breakDuration: Int
+    email: String
+    firstName: String
+    lastName: String
+    phone: String
   }
 
   type Mutation {

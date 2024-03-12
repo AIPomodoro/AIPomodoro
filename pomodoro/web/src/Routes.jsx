@@ -8,8 +8,9 @@
 // 'src/pages/Admin/BooksPage/BooksPage.js' -> AdminBooksPage
 
 import { Set, Router, Route } from '@redwoodjs/router'
-import TimerLayout from 'src/layouts/TimerLayout'
+
 import ScaffoldLayout from 'src/layouts/ScaffoldLayout'
+import TimerLayout from 'src/layouts/TimerLayout'
 
 import { useAuth } from './auth'
 
