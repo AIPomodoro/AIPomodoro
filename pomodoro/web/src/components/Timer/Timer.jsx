@@ -22,8 +22,8 @@ const Timer = () => {
           setTime((time) => time - 1)
         } else if (time === 0) {
           let newTime = isBreak
-            ? currentUser.profile.workDuration
-            : currentUser.profile.breakDuration
+            ? currentUser?.profile?.workDuration || 25
+            : currentUser?.profile?.breakDuration || 5
 
           setIsBreak(!isBreak)
           setTime(newTime)
