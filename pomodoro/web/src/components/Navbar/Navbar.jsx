@@ -8,13 +8,19 @@ import { useAuth } from 'src/auth'
 
 import SettingsModal from '../SettingsModal/SettingsModal'
 
-const Navbar = () => {
+const Navbar = ({
+  isDropdownOpen,
+  toggleDropdown,
+  isSettingsOpen,
+  toggleSettings,
+  saveSettings,
+  settings,
+}) => {
   const { isAuthenticated, logIn, logOut } = useAuth()
-  const [isOpen, setIsOpen] = useState(false)
-  const [isSettingsOpen, setIsSettingsOpen] = useState(false)
 
-  const toggleSettings = () => {
-    setIsSettingsOpen(!isSettingsOpen)
+  const handleSettingsClose = (data) => {
+    saveSettings(data)
+    toggleSettings()
   }
 
   return (
@@ -69,14 +75,14 @@ const Navbar = () => {
               {/* Mobile menu button */}
               <div className="-mr-2 flex md:hidden">
                 <button
-                  onClick={() => setIsOpen(!isOpen)}
+                  onClick={toggleDropdown}
                   type="button"
                   className="inline-flex items-center justify-center rounded-md bg-gray-900 p-2 text-gray-400 hover:bg-gray-800 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                   aria-controls="mobile-menu"
                   aria-expanded="false"
                 >
                   <span className="sr-only">Open main menu</span>
-                  {!isOpen ? (
+                  {!isDropdownOpen ? (
                     <svg
                       className="block h-6 w-6"
                       xmlns="http://www.w3.org/2000/svg"
@@ -116,7 +122,7 @@ const Navbar = () => {
         </div>
         {/* Mobile menu */}
         <Transition
-          show={isOpen}
+          show={isDropdownOpen}
           enter="transition ease-out duration-100 transform"
           enterFrom="opacity-0 scale-95"
           enterTo="opacity-100 scale-100"
@@ -128,7 +134,7 @@ const Navbar = () => {
             <div className="md:hidden" id="mobile-menu">
               <ul ref={ref} className="space-y-2 px-2 pb-3 pt-2 sm:px-3">
                 <li>
-                  <button>Settings</button>
+                  <button onClick={toggleSettings}>Settings</button>
                 </li>
                 {isAuthenticated ? (
                   <>
@@ -152,7 +158,11 @@ const Navbar = () => {
           )}
         </Transition>
       </nav>
-      <SettingsModal isOpen={isSettingsOpen} onClose={toggleSettings} />
+      <SettingsModal
+        isOpen={isSettingsOpen}
+        onClose={handleSettingsClose}
+        settings={settings}
+      />
     </div>
   )
 }

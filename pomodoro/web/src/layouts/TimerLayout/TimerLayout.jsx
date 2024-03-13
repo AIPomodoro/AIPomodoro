@@ -1,9 +1,8 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 import { useMutation } from '@redwoodjs/web'
 
 import { useAuth } from 'src/auth'
-import Navbar from 'src/components/Navbar'
 
 const UPDATE_PROFILE = gql`
   mutation UpdateProfileMutation($id: Int!, $input: UpdateProfileInput!) {
@@ -14,7 +13,7 @@ const UPDATE_PROFILE = gql`
 `
 
 const TimerLayout = ({ children }) => {
-  const { isAuthenticated, currentUser, userMetadata } = useAuth()
+  const { isAuthenticated, currentUser, userMetadata, loading } = useAuth()
   const [update] = useMutation(UPDATE_PROFILE)
 
   //update user email
@@ -34,9 +33,13 @@ const TimerLayout = ({ children }) => {
     }
   }, [currentUser, isAuthenticated, userMetadata, update])
 
+  if (loading) {
+    return <p>Loading...</p>
+  }
+
   return (
     <>
-      <Navbar />
+      {/* <Navbar isDropdownOpen={isDropdownOpen} toggleDropdown={toggleDropdown} /> */}
       <main>{children}</main>
     </>
   )
