@@ -3,7 +3,7 @@ import { useMutation } from '@redwoodjs/web'
 
 import { toast } from '@redwoodjs/web/toast'
 
-import { timeTag } from 'src/lib/formatters'
+import { checkboxInputTag, timeTag } from 'src/lib/formatters'
 
 const DELETE_PROFILE_MUTATION = gql`
   mutation DeleteProfileMutation($id: Int!) {
@@ -75,6 +75,22 @@ const Profile = ({ profile }) => {
             <tr>
               <th>Phone</th>
               <td>{profile.phone}</td>
+            </tr>
+            <tr>
+              <th>Last login</th>
+              <td>{timeTag(profile.lastLogin)}</td>
+            </tr>
+            <tr>
+              <th>Current streak</th>
+              <td>{profile.currentStreak}</td>
+            </tr>
+            <tr>
+              <th>Sound enabled</th>
+              <td>{checkboxInputTag(profile.soundEnabled)}</td>
+            </tr>
+            <tr>
+              <th>Auto start</th>
+              <td>{checkboxInputTag(profile.autoStart)}</td>
             </tr>
           </tbody>
         </table>

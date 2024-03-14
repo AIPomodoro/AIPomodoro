@@ -14,6 +14,10 @@ export const QUERY = gql`
       firstName
       lastName
       phone
+      lastLogin
+      currentStreak
+      soundEnabled
+      autoStart
     }
   }
 `

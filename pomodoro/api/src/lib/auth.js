@@ -54,6 +54,9 @@ export const getCurrentUser = async (decoded) => {
         userId: user.id,
         workDuration: 1500,
         breakDuration: 300,
+        soundEnabled: true,
+        autoStart: false,
+        currentStreak: 1,
       },
     })
   } else {

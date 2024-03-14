@@ -24,7 +24,7 @@ const Timer = ({ settings }) => {
             ? currentUser?.profile?.workDuration || 3
             : currentUser?.profile?.breakDuration || 2
 
-          if (!settings.autoStartEnabled) setIsRunning(false)
+          if (!settings.autoStart) setIsRunning(false)
           setIsBreak(!isBreak)
           setTime(newTime)
         }

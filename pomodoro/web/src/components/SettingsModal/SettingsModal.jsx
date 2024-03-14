@@ -4,9 +4,7 @@ import { Form, Label, Submit, CheckboxField } from '@redwoodjs/forms'
 
 const SettingsModal = ({ isOpen, onClose, settings }) => {
   const [soundEnabled, setSoundEnabled] = useState(settings.soundEnabled)
-  const [autoStartEnabled, setAutoStartEnabled] = useState(
-    settings.autoStartEnabled
-  )
+  const [autoStart, setAutoStart] = useState(settings.autoStart)
   if (!isOpen) return null
 
   const handleSubmit = (data) => {
@@ -14,7 +12,7 @@ const SettingsModal = ({ isOpen, onClose, settings }) => {
   }
 
   const handleSoundEnabledChange = () => setSoundEnabled(!soundEnabled)
-  const handleAutoStartChange = () => setAutoStartEnabled(!autoStartEnabled)
+  const handleAutoStartChange = () => setAutoStart(!autoStart)
 
   return (
     <div className="left-0, fixed top-0 flex h-full w-full items-center justify-center bg-black bg-opacity-50">
@@ -32,12 +30,12 @@ const SettingsModal = ({ isOpen, onClose, settings }) => {
           />
           <br />
 
-          <Label className="me-2" htmlFor="autoStartEnabled">
+          <Label className="me-2" htmlFor="autoStart">
             Auto Start
           </Label>
           <CheckboxField
-            name="autoStartEnabled"
-            checked={autoStartEnabled}
+            name="autoStart"
+            checked={autoStart}
             onChange={handleAutoStartChange}
           />
           <br />

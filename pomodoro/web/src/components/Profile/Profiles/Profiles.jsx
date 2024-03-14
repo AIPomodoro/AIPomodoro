@@ -4,7 +4,7 @@ import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 
 import { QUERY } from 'src/components/Profile/ProfilesCell'
-import { timeTag, truncate } from 'src/lib/formatters'
+import { checkboxInputTag, timeTag, truncate } from 'src/lib/formatters'
 
 const DELETE_PROFILE_MUTATION = gql`
   mutation DeleteProfileMutation($id: Int!) {
@@ -49,6 +49,10 @@ const ProfilesList = ({ profiles }) => {
             <th>First name</th>
             <th>Last name</th>
             <th>Phone</th>
+            <th>Last login</th>
+            <th>Current streak</th>
+            <th>Sound enabled</th>
+            <th>Auto start</th>
             <th>&nbsp;</th>
           </tr>
         </thead>
@@ -64,6 +68,10 @@ const ProfilesList = ({ profiles }) => {
               <td>{truncate(profile.firstName)}</td>
               <td>{truncate(profile.lastName)}</td>
               <td>{truncate(profile.phone)}</td>
+              <td>{timeTag(profile.lastLogin)}</td>
+              <td>{truncate(profile.currentStreak)}</td>
+              <td>{checkboxInputTag(profile.soundEnabled)}</td>
+              <td>{checkboxInputTag(profile.autoStart)}</td>
               <td>
                 <nav className="rw-table-actions">
                   <Link

@@ -34,6 +34,10 @@ model Profile {
   lastName       String?
   phone          String?
   journalEntries JournalEntry[]
+  lastLogin      DateTime       @default(now())
+  currentStreak  Int
+  soundEnabled   Boolean
+  autoStart      Boolean
 }
 
 model JournalEntry {

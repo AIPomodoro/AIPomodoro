@@ -11,6 +11,10 @@ export const schema = gql`
     lastName: String
     phone: String
     journalEntries: [JournalEntry]!
+    lastLogin: DateTime!
+    currentStreak: Int!
+    soundEnabled: Boolean!
+    autoStart: Boolean!
   }
 
   type Query {
@@ -26,6 +30,10 @@ export const schema = gql`
     firstName: String
     lastName: String
     phone: String
+    lastLogin: DateTime!
+    currentStreak: Int!
+    soundEnabled: Boolean!
+    autoStart: Boolean!
   }
 
   input UpdateProfileInput {
@@ -36,6 +44,10 @@ export const schema = gql`
     firstName: String
     lastName: String
     phone: String
+    lastLogin: DateTime
+    currentStreak: Int
+    soundEnabled: Boolean
+    autoStart: Boolean
   }
 
   type Mutation {

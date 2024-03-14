@@ -5,6 +5,7 @@ import {
   Label,
   NumberField,
   TextField,
+  CheckboxField,
   Submit,
 } from '@redwoodjs/forms'
 
@@ -144,6 +145,58 @@ const ProfileForm = (props) => {
         />
 
         <FieldError name="phone" className="rw-field-error" />
+
+        <Label
+          name="currentStreak"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          Current streak
+        </Label>
+
+        <NumberField
+          name="currentStreak"
+          defaultValue={props.profile?.currentStreak}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+          validation={{ required: true }}
+        />
+
+        <FieldError name="currentStreak" className="rw-field-error" />
+
+        <Label
+          name="soundEnabled"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          Sound enabled
+        </Label>
+
+        <CheckboxField
+          name="soundEnabled"
+          defaultChecked={props.profile?.soundEnabled}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+        />
+
+        <FieldError name="soundEnabled" className="rw-field-error" />
+
+        <Label
+          name="autoStart"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          Auto start
+        </Label>
+
+        <CheckboxField
+          name="autoStart"
+          defaultChecked={props.profile?.autoStart}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+        />
+
+        <FieldError name="autoStart" className="rw-field-error" />
 
         <div className="rw-button-group">
           <Submit disabled={props.loading} className="rw-button rw-button-blue">

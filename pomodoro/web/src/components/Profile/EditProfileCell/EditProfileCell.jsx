@@ -17,6 +17,10 @@ export const QUERY = gql`
       firstName
       lastName
       phone
+      lastLogin
+      currentStreak
+      soundEnabled
+      autoStart
     }
   }
 `
@@ -33,6 +37,10 @@ const UPDATE_PROFILE_MUTATION = gql`
       firstName
       lastName
       phone
+      lastLogin
+      currentStreak
+      soundEnabled
+      autoStart
     }
   }
 `
