@@ -3,8 +3,9 @@ import { useState, useEffect } from 'react'
 import { useAuth } from 'src/auth'
 
 import bell from '../../../assets/bell.wav'
+import RatingModal from '../RatingModal/RatingModal'
 
-const Timer = ({ settings }) => {
+const Timer = ({ settings, isRatingOpen, openRating, handleRating }) => {
   const { currentUser } = useAuth()
   const [isBreak, setIsBreak] = useState(false)
   const [isRunning, setIsRunning] = useState(false)
@@ -24,7 +25,10 @@ const Timer = ({ settings }) => {
             ? currentUser?.profile?.workDuration || 3
             : currentUser?.profile?.breakDuration || 2
 
-          if (!settings.autoStart) setIsRunning(false)
+          if (!settings.autoStart) {
+            if (!isBreak) openRating()
+            setIsRunning(false)
+          }
           setIsBreak(!isBreak)
           setTime(newTime)
         }
@@ -33,7 +37,7 @@ const Timer = ({ settings }) => {
     return () => {
       clearInterval(interval)
     }
-  }, [time, isRunning, isBreak, currentUser, settings])
+  }, [time, isRunning, isBreak, currentUser, settings, openRating])
 
   let buttonText = isRunning ? 'Pause' : 'Start'
 
@@ -54,6 +58,7 @@ const Timer = ({ settings }) => {
           {buttonText}
         </button>
       </div>
+      <RatingModal isOpen={isRatingOpen} handleRating={handleRating} />
     </div>
   )
 }

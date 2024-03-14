@@ -15,7 +15,7 @@ const SettingsModal = ({ isOpen, onClose, settings }) => {
   const handleAutoStartChange = () => setAutoStart(!autoStart)
 
   return (
-    <div className="left-0, fixed top-0 flex h-full w-full items-center justify-center bg-black bg-opacity-50">
+    <div className="fixed left-0 top-0 flex h-full w-full items-center justify-center bg-black bg-opacity-50">
       <div className="rounded-md bg-white p-8">
         <h2>Settings</h2>
         <hr></hr>

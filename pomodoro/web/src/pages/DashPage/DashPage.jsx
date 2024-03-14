@@ -30,6 +30,7 @@ const DashPage = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const [isSettingsOpen, setIsSettingsOpen] = useState(false)
   const [settings, setSettings] = useState(defaultSettings)
+  const [isRatingOpen, setIsRatingOpen] = useState(false)
 
   //Navbar State
   const toggleDropdown = () => {
@@ -56,6 +57,15 @@ const DashPage = () => {
     setIsSettingsOpen(!isSettingsOpen)
   }
 
+  const openRating = () => {
+    setIsRatingOpen(true)
+  }
+  const handleRating = (rating) => {
+    //TODO do rating submit stuff
+    console.log(rating)
+    setIsRatingOpen(false)
+  }
+
   return (
     <div>
       <Metadata title="Dash" description="Dash page" />
@@ -70,7 +80,12 @@ const DashPage = () => {
       />
 
       <div className="flex h-48 justify-center">
-        <Timer settings={settings} />
+        <Timer
+          settings={settings}
+          isRatingOpen={isRatingOpen}
+          openRating={openRating}
+          handleRating={handleRating}
+        />
       </div>
     </div>
   )
