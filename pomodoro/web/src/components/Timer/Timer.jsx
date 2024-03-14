@@ -9,7 +9,7 @@ const Timer = ({ settings }) => {
   const [isBreak, setIsBreak] = useState(false)
   const [isRunning, setIsRunning] = useState(false)
 
-  let initialTime = currentUser?.profile?.workDuration || 1500
+  let initialTime = currentUser?.profile?.workDuration || 3
   const [time, setTime] = useState(initialTime)
 
   useEffect(() => {
@@ -21,9 +21,10 @@ const Timer = ({ settings }) => {
           if (time === 1 && settings.soundEnabled) new Audio(bell).play()
         } else if (time === 0) {
           let newTime = isBreak
-            ? currentUser?.profile?.workDuration || 25
-            : currentUser?.profile?.breakDuration || 5
+            ? currentUser?.profile?.workDuration || 3
+            : currentUser?.profile?.breakDuration || 2
 
+          if (!settings.autoStartEnabled) setIsRunning(false)
           setIsBreak(!isBreak)
           setTime(newTime)
         }
@@ -38,6 +39,7 @@ const Timer = ({ settings }) => {
 
   return (
     <div className="m-auto w-auto rounded-lg bg-slate-500 p-5 text-center font-medium tracking-tighter">
+      {isBreak ? <h2>Break</h2> : <h2>Work</h2>}
       <span className="text-9xl">
         {String(Math.floor(time / 60)).padStart(2, '0')}:
         {String(Math.floor(time % 60)).padStart(2, '0')}

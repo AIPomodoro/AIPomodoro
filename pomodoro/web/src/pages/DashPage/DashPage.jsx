@@ -5,10 +5,15 @@ import { Metadata } from '@redwoodjs/web'
 import Navbar from 'src/components/Navbar'
 import Timer from 'src/components/Timer/Timer'
 
+const defaultSettings = {
+  soundEnabled: true,
+  autoStartEnabled: false,
+}
+
 const DashPage = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const [isSettingsOpen, setIsSettingsOpen] = useState(false)
-  const [settings, setSettings] = useState({ soundEnabled: true })
+  const [settings, setSettings] = useState(defaultSettings)
 
   //Navbar State
   const toggleDropdown = () => {
