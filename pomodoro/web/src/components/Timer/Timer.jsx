@@ -10,7 +10,10 @@ const Timer = ({ settings, isRatingOpen, openRating, handleRating }) => {
   const [isBreak, setIsBreak] = useState(false)
   const [isRunning, setIsRunning] = useState(false)
 
-  let initialTime = currentUser?.profile?.workDuration || 3
+  const defaultWork = 5
+  const defaultBreak = 3
+
+  let initialTime = currentUser?.profile?.workDuration || defaultWork
   const [time, setTime] = useState(initialTime)
 
   useEffect(() => {
@@ -21,10 +24,10 @@ const Timer = ({ settings, isRatingOpen, openRating, handleRating }) => {
           setTime((time) => time - 1)
           if (time === 1 && settings.soundEnabled) new Audio(bell).play()
         } else if (time === 0) {
+          /* flip time to the opposite after timer is done */
           let newTime = isBreak
-            ? currentUser?.profile?.workDuration || 3
-            : currentUser?.profile?.breakDuration || 2
-
+            ? currentUser?.profile?.workDuration || defaultWork
+            : currentUser?.profile?.breakDuration || defaultBreak
           if (!settings.autoStart) {
             if (!isBreak) openRating()
             setIsRunning(false)
@@ -39,7 +42,13 @@ const Timer = ({ settings, isRatingOpen, openRating, handleRating }) => {
     }
   }, [time, isRunning, isBreak, currentUser, settings, openRating])
 
-  let buttonText = isRunning ? 'Pause' : 'Start'
+  const reset = () => {
+    let newTime = isBreak
+      ? currentUser?.profile?.breakDuration || defaultBreak
+      : currentUser?.profile?.workDuration || defaultWork
+    setTime(newTime)
+    setIsRunning(false)
+  }
 
   return (
     <div className="m-auto w-auto rounded-lg bg-slate-500 p-5 text-center font-medium tracking-tighter">
@@ -50,12 +59,16 @@ const Timer = ({ settings, isRatingOpen, openRating, handleRating }) => {
       </span>
       <div>
         <button
-          className="h-12 w-32 rounded-md bg-slate-100 p-1 text-xl shadow-md hover:bg-slate-300"
+          className="mb-2 h-12 w-32 rounded-md bg-slate-100 p-1 text-xl shadow-md hover:bg-slate-300"
           onClick={() => {
             setIsRunning(!isRunning)
           }}
         >
-          {buttonText}
+          {isRunning ? 'Pause' : 'Start'}
+        </button>
+        <br></br>
+        <button onClick={reset} className="hover:underline">
+          reset
         </button>
       </div>
       <RatingModal isOpen={isRatingOpen} handleRating={handleRating} />
