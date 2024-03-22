@@ -4,6 +4,7 @@ export const schema = gql`
     userId: Int!
     user: User!
     modelData: String
+    rating: Int
   }
 
   type Query {
@@ -14,11 +15,13 @@ export const schema = gql`
   input CreateReinforcementModelInput {
     userId: Int!
     modelData: String
+    rating: Int
   }
 
   input UpdateReinforcementModelInput {
     userId: Int
     modelData: String
+    rating: Int
   }
 
   type Mutation {

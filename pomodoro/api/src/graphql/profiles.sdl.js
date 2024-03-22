@@ -15,6 +15,7 @@ export const schema = gql`
     currentStreak: Int!
     soundEnabled: Boolean!
     autoStart: Boolean!
+    modelId: Int
   }
 
   type Query {
@@ -34,6 +35,7 @@ export const schema = gql`
     currentStreak: Int!
     soundEnabled: Boolean!
     autoStart: Boolean!
+    modelId: Int
   }
 
   input UpdateProfileInput {
@@ -48,6 +50,7 @@ export const schema = gql`
     currentStreak: Int
     soundEnabled: Boolean
     autoStart: Boolean
+    modelId: Int
   }
 
   type Mutation {

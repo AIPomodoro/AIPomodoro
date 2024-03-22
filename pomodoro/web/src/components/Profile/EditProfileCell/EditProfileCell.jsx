@@ -21,6 +21,7 @@ export const QUERY = gql`
       currentStreak
       soundEnabled
       autoStart
+      modelId
     }
   }
 `
@@ -41,6 +42,7 @@ const UPDATE_PROFILE_MUTATION = gql`
       currentStreak
       soundEnabled
       autoStart
+      modelId
     }
   }
 `

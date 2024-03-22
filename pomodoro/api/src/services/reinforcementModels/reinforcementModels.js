@@ -17,6 +17,11 @@ export const createReinforcementModel = ({ input }) => {
 }
 
 export const updateReinforcementModel = ({ id, input }) => {
+  const model = reinforcementModel(id)
+  input.modelData = model.modelData.array().add(tf.scalar(input.rating))
+  // model.modelData.add(tf.scalar(input.rating))
+  // input.modelData = model
+
   return db.reinforcementModel.update({
     data: input,
     where: { id },

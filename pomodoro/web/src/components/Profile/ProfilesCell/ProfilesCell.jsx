@@ -18,6 +18,7 @@ export const QUERY = gql`
       currentStreak
       soundEnabled
       autoStart
+      modelId
     }
   }
 `

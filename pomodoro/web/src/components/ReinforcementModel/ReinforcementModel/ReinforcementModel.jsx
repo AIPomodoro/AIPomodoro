@@ -57,6 +57,10 @@ const ReinforcementModel = ({ reinforcementModel }) => {
               <th>Model data</th>
               <td>{reinforcementModel.modelData}</td>
             </tr>
+            <tr>
+              <th>Rating</th>
+              <td>{reinforcementModel.rating}</td>
+            </tr>
           </tbody>
         </table>
       </div>

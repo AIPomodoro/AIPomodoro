@@ -198,6 +198,23 @@ const ProfileForm = (props) => {
 
         <FieldError name="autoStart" className="rw-field-error" />
 
+        <Label
+          name="modelId"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          Model id
+        </Label>
+
+        <NumberField
+          name="modelId"
+          defaultValue={props.profile?.modelId}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+        />
+
+        <FieldError name="modelId" className="rw-field-error" />
+
         <div className="rw-button-group">
           <Submit disabled={props.loading} className="rw-button rw-button-blue">
             Save

@@ -92,6 +92,10 @@ const Profile = ({ profile }) => {
               <th>Auto start</th>
               <td>{checkboxInputTag(profile.autoStart)}</td>
             </tr>
+            <tr>
+              <th>Model id</th>
+              <td>{profile.modelId}</td>
+            </tr>
           </tbody>
         </table>
       </div>

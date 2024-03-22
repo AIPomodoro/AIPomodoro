@@ -38,6 +38,7 @@ model Profile {
   currentStreak  Int
   soundEnabled   Boolean
   autoStart      Boolean
+  modelId        Int?
 }
 
 model ReinforcementModel {
@@ -45,6 +46,7 @@ model ReinforcementModel {
   userId    Int     @unique
   user      User    @relation(fields: [userId], references: [id])
   modelData String?
+  rating    Int? //idk
 }
 
 model JournalEntry {

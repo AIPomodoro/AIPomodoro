@@ -16,6 +16,15 @@ const UPDATE_PROFILE_SETTINGS = gql`
   }
 `
 
+//this is hacky as fuck
+const UPDATE_RLModel = gql`
+  mutation UpdateRatingMutation($id: Int!, $input: UpdateReinforcementModelInput!) {
+    updateReinforcementModel(id: $id, input: $input) {
+      rating
+    }
+  }
+`
+
 const DashPage = () => {
   const { currentUser, loading } = useAuth()
 
@@ -27,6 +36,7 @@ const DashPage = () => {
   }
 
   const [updateSettings] = useMutation(UPDATE_PROFILE_SETTINGS)
+  const [updateRating] = useMutation(UPDATE_RLModel)
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const [isSettingsOpen, setIsSettingsOpen] = useState(false)
   const [settings, setSettings] = useState(defaultSettings)
@@ -61,7 +71,15 @@ const DashPage = () => {
     setIsRatingOpen(true)
   }
   const handleRating = (rating) => {
-    //TODO do rating submit stuff
+    //no fucking clue if this works
+    updateRating({
+      variables: {
+        id: currentUser?.profile?.modelId,
+        input: {
+          rating: rating,
+        },
+      }
+    })
     console.log(rating)
     setIsRatingOpen(false)
   }

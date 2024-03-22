@@ -48,6 +48,7 @@ const ReinforcementModelsList = ({ reinforcementModels }) => {
             <th>Id</th>
             <th>User id</th>
             <th>Model data</th>
+            <th>Rating</th>
             <th>&nbsp;</th>
           </tr>
         </thead>
@@ -57,6 +58,7 @@ const ReinforcementModelsList = ({ reinforcementModels }) => {
               <td>{truncate(reinforcementModel.id)}</td>
               <td>{truncate(reinforcementModel.userId)}</td>
               <td>{truncate(reinforcementModel.modelData)}</td>
+              <td>{truncate(reinforcementModel.rating)}</td>
               <td>
                 <nav className="rw-table-actions">
                   <Link

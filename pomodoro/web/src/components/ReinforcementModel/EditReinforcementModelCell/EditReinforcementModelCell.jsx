@@ -11,6 +11,7 @@ export const QUERY = gql`
       id
       userId
       modelData
+      rating
     }
   }
 `
@@ -24,6 +25,7 @@ const UPDATE_REINFORCEMENT_MODEL_MUTATION = gql`
       id
       userId
       modelData
+      rating
     }
   }
 `

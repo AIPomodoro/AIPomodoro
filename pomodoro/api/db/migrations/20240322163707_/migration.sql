@@ -20,6 +20,7 @@ CREATE TABLE "Profile" (
     "currentStreak" INTEGER NOT NULL,
     "soundEnabled" BOOLEAN NOT NULL,
     "autoStart" BOOLEAN NOT NULL,
+    "modelId" INTEGER,
     CONSTRAINT "Profile_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
@@ -28,6 +29,7 @@ CREATE TABLE "ReinforcementModel" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "userId" INTEGER NOT NULL,
     "modelData" TEXT,
+    "rating" INTEGER,
     CONSTRAINT "ReinforcementModel_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 

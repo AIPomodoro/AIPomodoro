@@ -1,6 +1,8 @@
 import { AuthenticationError, ForbiddenError } from '@redwoodjs/graphql-server'
+import TensorFlowModel, { createModel, updateModel } from 'src/services/reinforcementModels/TensorFlowModel'
 
 import { db } from './db'
+import { model } from '@tensorflow/tfjs-node'
 
 /**
  * Represents the user attributes returned by the decoding the
@@ -49,9 +51,10 @@ export const getCurrentUser = async (decoded) => {
     })
 
     //create new RL model
-    model = await db.reinforcementModel.create({
+    let model = await db.reinforcementModel.create({
       data: {
         userId: user.id,
+        modelData: createModel()
       }
     })
 
@@ -64,6 +67,7 @@ export const getCurrentUser = async (decoded) => {
         soundEnabled: true,
         autoStart: false,
         currentStreak: 1,
+        modelId: model.id
       },
     })
   } else {

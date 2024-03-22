@@ -53,6 +53,7 @@ const ProfilesList = ({ profiles }) => {
             <th>Current streak</th>
             <th>Sound enabled</th>
             <th>Auto start</th>
+            <th>Model id</th>
             <th>&nbsp;</th>
           </tr>
         </thead>
@@ -72,6 +73,7 @@ const ProfilesList = ({ profiles }) => {
               <td>{truncate(profile.currentStreak)}</td>
               <td>{checkboxInputTag(profile.soundEnabled)}</td>
               <td>{checkboxInputTag(profile.autoStart)}</td>
+              <td>{truncate(profile.modelId)}</td>
               <td>
                 <nav className="rw-table-actions">
                   <Link
