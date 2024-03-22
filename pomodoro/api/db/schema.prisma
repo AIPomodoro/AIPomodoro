@@ -15,11 +15,11 @@ generator client {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  userId    String   @unique //Auth0.sub claim
-  createdAt DateTime @default(now())
-  profile   Profile?
-  // profile   Profile?
+  id                 Int                 @id @default(autoincrement())
+  userId             String              @unique //Auth0.sub claim
+  createdAt          DateTime            @default(now())
+  profile            Profile?
+  reinforcementModel ReinforcementModel?
 }
 
 model Profile {
@@ -38,6 +38,13 @@ model Profile {
   currentStreak  Int
   soundEnabled   Boolean
   autoStart      Boolean
+}
+
+model ReinforcementModel {
+  id        Int     @id @default(autoincrement())
+  userId    Int     @unique
+  user      User    @relation(fields: [userId], references: [id])
+  modelData String?
 }
 
 model JournalEntry {

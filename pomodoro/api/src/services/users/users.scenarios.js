@@ -1,6 +1,6 @@
 export const standard = defineScenario({
   user: {
-    one: { data: { userId: 'String27175' } },
-    two: { data: { userId: 'String9228231' } },
+    one: { data: { userId: 'String1873258' } },
+    two: { data: { userId: 'String4895064' } },
   },
 })

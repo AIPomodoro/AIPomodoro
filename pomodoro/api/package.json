@@ -5,6 +5,7 @@
   "dependencies": {
     "@redwoodjs/api": "7.0.2",
     "@redwoodjs/auth-auth0-api": "7.0.2",
-    "@redwoodjs/graphql-server": "7.0.2"
+    "@redwoodjs/graphql-server": "7.0.2",
+    "@tensorflow/tfjs-node": "^4.17.0"
   }
 }

@@ -48,6 +48,13 @@ export const getCurrentUser = async (decoded) => {
       },
     })
 
+    //create new RL model
+    model = await db.reinforcementModel.create({
+      data: {
+        userId: user.id,
+      }
+    })
+
     //create new profile
     profile = await db.profile.create({
       data: {

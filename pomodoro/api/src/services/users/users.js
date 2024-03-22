@@ -33,4 +33,7 @@ export const User = {
   profile: (_obj, { root }) => {
     return db.user.findUnique({ where: { id: root?.id } }).profile()
   },
+  reinforcementModel: (_obj, { root }) => {
+    return db.user.findUnique({ where: { id: root?.id } }).reinforcementModel()
+  },
 }

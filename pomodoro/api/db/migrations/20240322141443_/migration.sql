@@ -24,6 +24,14 @@ CREATE TABLE "Profile" (
 );
 
 -- CreateTable
+CREATE TABLE "ReinforcementModel" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "userId" INTEGER NOT NULL,
+    "modelData" TEXT,
+    CONSTRAINT "ReinforcementModel_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+-- CreateTable
 CREATE TABLE "JournalEntry" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "profileId" INTEGER NOT NULL,
@@ -38,3 +46,6 @@ CREATE UNIQUE INDEX "User_userId_key" ON "User"("userId");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Profile_userId_key" ON "Profile"("userId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "ReinforcementModel_userId_key" ON "ReinforcementModel"("userId");

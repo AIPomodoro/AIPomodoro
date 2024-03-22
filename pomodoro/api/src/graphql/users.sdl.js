@@ -4,6 +4,7 @@ export const schema = gql`
     userId: String!
     createdAt: DateTime!
     profile: Profile
+    reinforcementModel: ReinforcementModel
   }
 
   type Query {
