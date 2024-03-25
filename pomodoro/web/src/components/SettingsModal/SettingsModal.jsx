@@ -1,6 +1,12 @@
 import { useState } from 'react'
 
-import { Form, Label, Submit, CheckboxField } from '@redwoodjs/forms'
+import {
+  Form,
+  Label,
+  Submit,
+  CheckboxField,
+  NumberField,
+} from '@redwoodjs/forms'
 
 const SettingsModal = ({ isOpen, onClose, settings }) => {
   const [soundEnabled, setSoundEnabled] = useState(settings.soundEnabled)
@@ -37,6 +43,23 @@ const SettingsModal = ({ isOpen, onClose, settings }) => {
             name="autoStart"
             checked={autoStart}
             onChange={handleAutoStartChange}
+          />
+          <br />
+          <Label htmlFor="pomodoroTime" className="me-2">
+            Pomodoro:
+          </Label>
+          <NumberField
+            name="workTime"
+            className="right-0 mb-4 rounded-md border-2 border-black"
+          />
+          <br />
+
+          <Label htmlFor="breakTime" className="me-2">
+            Break:
+          </Label>
+          <NumberField
+            name="breakTime"
+            className="mb-4 rounded-md border-2 border-black"
           />
           <br />
           <Submit>Save</Submit>

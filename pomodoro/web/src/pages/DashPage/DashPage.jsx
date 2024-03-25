@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 import { Metadata } from '@redwoodjs/web'
 import { useMutation } from '@redwoodjs/web'
+import { Toaster, toast } from '@redwoodjs/web/toast'
 
 import { useAuth } from 'src/auth'
 import Navbar from 'src/components/Navbar'
@@ -45,10 +46,13 @@ const DashPage = () => {
         input: {
           soundEnabled: data.soundEnabled,
           autoStart: data.autoStart,
+          workDuration: data.pomodoroTime,
+          breakDuration: data.breakTime,
         },
       },
     })
-    console.log(data)
+    //console.log(data)
+    toast('Saved!')
     setSettings(data)
   }
 
@@ -67,27 +71,30 @@ const DashPage = () => {
   }
 
   return (
-    <div>
-      <Metadata title="Dash" description="Dash page" />
+    <>
+      <Toaster />
+      <div>
+        <Metadata title="Dash" description="Dash page" />
 
-      <Navbar
-        isDropdownOpen={isDropdownOpen}
-        toggleDropdown={toggleDropdown}
-        isSettingsOpen={isSettingsOpen}
-        toggleSettings={toggleSettings}
-        saveSettings={saveSettings}
-        settings={settings}
-      />
-
-      <div className="flex h-48 justify-center">
-        <Timer
+        <Navbar
+          isDropdownOpen={isDropdownOpen}
+          toggleDropdown={toggleDropdown}
+          isSettingsOpen={isSettingsOpen}
+          toggleSettings={toggleSettings}
+          saveSettings={saveSettings}
           settings={settings}
-          isRatingOpen={isRatingOpen}
-          openRating={openRating}
-          handleRating={handleRating}
         />
+
+        <div className="flex h-48 justify-center">
+          <Timer
+            settings={settings}
+            isRatingOpen={isRatingOpen}
+            openRating={openRating}
+            handleRating={handleRating}
+          />
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 
