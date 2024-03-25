@@ -6,6 +6,7 @@ import {
   Submit,
   CheckboxField,
   NumberField,
+  FieldError,
 } from '@redwoodjs/forms'
 
 const SettingsModal = ({ isOpen, onClose, settings }) => {
@@ -45,13 +46,27 @@ const SettingsModal = ({ isOpen, onClose, settings }) => {
             onChange={handleAutoStartChange}
           />
           <br />
+          <hr />
           <Label htmlFor="workDuration" className="me-2">
             Pomodoro:
           </Label>
-          <NumberField
-            name="workDuration"
-            className="right-0 mb-4 rounded-md border-2 border-black"
-          />
+          <div name="workDuration">
+            <Label htmlFor="workSeconds" className="me-2">
+              Minutes:
+            </Label>
+            <NumberField
+              name="workMinutes"
+              className="right-0 rounded-md border-2 border-black"
+              validation={{
+                required: true,
+                min: 0,
+                max: 9999,
+              }}
+            />
+          </div>
+
+          <br />
+          <FieldError name="workMinutes" className="error" />
           <br />
 
           <Label htmlFor="breakDuration" className="me-2">
@@ -59,8 +74,11 @@ const SettingsModal = ({ isOpen, onClose, settings }) => {
           </Label>
           <NumberField
             name="breakDuration"
-            className="mb-4 rounded-md border-2 border-black"
+            className="rounded-md border-2 border-black"
+            validation={{ required: true }}
           />
+          <br />
+          <FieldError name="breakDuration" className="error" />
           <br />
           <Submit>Save</Submit>
         </Form>

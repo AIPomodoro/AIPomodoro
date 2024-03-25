@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import { Metadata } from '@redwoodjs/web'
 import { useMutation } from '@redwoodjs/web'
@@ -6,7 +6,10 @@ import { Toaster, toast } from '@redwoodjs/web/toast'
 
 import { useAuth } from 'src/auth'
 import Navbar from 'src/components/Navbar'
+import RatingModal from 'src/components/RatingModal/RatingModal'
 import Timer from 'src/components/Timer/Timer'
+
+import bell from '../../../assets/bell.wav'
 
 const UPDATE_PROFILE_SETTINGS = gql`
   mutation UpdateProfileMutation($id: Int!, $input: UpdateProfileInput!) {
@@ -36,6 +39,40 @@ const DashPage = () => {
   const [isRatingOpen, setIsRatingOpen] = useState(false)
   const [settings, setSettings] = useState(defaultSettings)
 
+  const [isBreak, setIsBreak] = useState(false)
+  const [isRunning, setIsRunning] = useState(false)
+  const [time, setTime] = useState(defaultSettings.workDuration)
+
+  useEffect(() => {
+    let interval
+    if (isRunning) {
+      interval = setInterval(() => {
+        if (time > 0) {
+          setTime((time) => time - 1)
+          if (time === 1 && settings.soundEnabled) new Audio(bell).play()
+        } else if (time === 0) {
+          /* flip time to the opposite after timer is done */
+          let newTime = isBreak ? settings.workDuration : settings.breakDuration
+          if (!settings.autoStart) {
+            if (!isBreak) setIsRatingOpen(true)
+            setIsRunning(false)
+          }
+          setIsBreak(!isBreak)
+          setTime(newTime)
+        }
+      }, 1000)
+    }
+    return () => {
+      clearInterval(interval)
+    }
+  }, [time, isRunning, isBreak, settings])
+
+  const reset = () => {
+    let newTime = isBreak ? settings.breakDuration : settings.workDuration
+    setTime(newTime)
+    setIsRunning(false)
+  }
+
   //Navbar State
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen)
@@ -43,6 +80,8 @@ const DashPage = () => {
 
   //save new settings
   const saveSettings = (data) => {
+    //TODO: calculate seconds here
+
     updateSettings({
       variables: {
         id: currentUser?.profile?.id,
@@ -54,10 +93,18 @@ const DashPage = () => {
         },
       },
     })
-    //console.log(data)
     toast('Saved!')
+
+    //TODO: create a new settings object here.
+
     setSettings(data)
-    console.log(settings)
+
+    setIsRunning(false)
+    if (isBreak && data.breakDuration) {
+      setTime(data.breakDuration)
+    } else if (data.workDuration) {
+      setTime(data.workDuration)
+    }
   }
 
   //open and close settings modal
@@ -65,9 +112,10 @@ const DashPage = () => {
     setIsSettingsOpen(!isSettingsOpen)
   }
 
-  const openRating = () => {
-    setIsRatingOpen(true)
+  const toggleRunning = () => {
+    setIsRunning(!isRunning)
   }
+
   const handleRating = (rating) => {
     //TODO do rating submit stuff
     console.log(rating)
@@ -91,13 +139,15 @@ const DashPage = () => {
 
         <div className="flex h-48 justify-center">
           <Timer
-            settings={settings}
-            isRatingOpen={isRatingOpen}
-            openRating={openRating}
-            handleRating={handleRating}
+            time={time}
+            isRunning={isRunning}
+            toggleRunning={toggleRunning}
+            isBreak={isBreak}
+            reset={reset}
           />
         </div>
       </div>
+      <RatingModal isOpen={isRatingOpen} handleRating={handleRating} />
     </>
   )
 }

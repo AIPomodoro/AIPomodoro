@@ -11,3 +11,7 @@
 /**
  * END --- SETUP TAILWINDCSS EDIT
  */
+
+ .error{
+  color:red;
+ }
