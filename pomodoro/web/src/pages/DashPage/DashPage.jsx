@@ -80,7 +80,17 @@ const DashPage = () => {
 
   //save new settings
   const saveSettings = (data) => {
-    //TODO: calculate seconds here
+    if (data.workDuration) {
+      data.workDuration *= 60
+    } else {
+      data.workDuration = settings.workDuration
+    }
+
+    if (data.breakDuration) {
+      data.breakDuration *= 60
+    } else {
+      data.breakDuration *= settings.breakDuration
+    }
 
     updateSettings({
       variables: {

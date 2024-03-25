@@ -160,7 +160,8 @@ const Navbar = ({
       </nav>
       <SettingsModal
         isOpen={isSettingsOpen}
-        onClose={handleSettingsClose}
+        saveSettings={saveSettings}
+        toggleSettings={toggleSettings}
         settings={settings}
       />
     </div>

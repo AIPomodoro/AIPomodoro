@@ -9,13 +9,14 @@ import {
   FieldError,
 } from '@redwoodjs/forms'
 
-const SettingsModal = ({ isOpen, onClose, settings }) => {
+const SettingsModal = ({ isOpen, saveSettings, toggleSettings, settings }) => {
   const [soundEnabled, setSoundEnabled] = useState(settings.soundEnabled)
   const [autoStart, setAutoStart] = useState(settings.autoStart)
   if (!isOpen) return null
 
   const handleSubmit = (data) => {
-    onClose(data)
+    saveSettings(data)
+    toggleSettings()
   }
 
   const handleSoundEnabledChange = () => setSoundEnabled(!soundEnabled)
@@ -34,6 +35,7 @@ const SettingsModal = ({ isOpen, onClose, settings }) => {
             name="soundEnabled"
             checked={soundEnabled}
             onChange={handleSoundEnabledChange}
+            className="mb-4"
           />
           <br />
 
@@ -44,43 +46,36 @@ const SettingsModal = ({ isOpen, onClose, settings }) => {
             name="autoStart"
             checked={autoStart}
             onChange={handleAutoStartChange}
+            className="mb-4"
           />
           <br />
-          <hr />
+
           <Label htmlFor="workDuration" className="me-2">
             Pomodoro:
           </Label>
-          <div name="workDuration">
-            <Label htmlFor="workSeconds" className="me-2">
-              Minutes:
-            </Label>
-            <NumberField
-              name="workMinutes"
-              className="right-0 rounded-md border-2 border-black"
-              validation={{
-                required: true,
-                min: 0,
-                max: 9999,
-              }}
-            />
-          </div>
-
+          <NumberField
+            name="workDuration"
+            className="right-0 rounded-md border-2 border-black"
+            validation={{ min: 1, max: 9999 }}
+          />
           <br />
-          <FieldError name="workMinutes" className="error" />
+          <FieldError name="workDuration" className="error" />
           <br />
-
           <Label htmlFor="breakDuration" className="me-2">
             Break:
           </Label>
           <NumberField
             name="breakDuration"
             className="rounded-md border-2 border-black"
-            validation={{ required: true }}
+            validation={{ min: 1, max: 9999 }}
           />
           <br />
           <FieldError name="breakDuration" className="error" />
           <br />
-          <Submit>Save</Submit>
+          <div className="flex justify-between">
+            <Submit>Save</Submit>
+            <button onClick={toggleSettings}>Cancel</button>
+          </div>
         </Form>
       </div>
     </div>
