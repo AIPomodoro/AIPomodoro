@@ -10,11 +10,7 @@ const Timer = ({ settings, isRatingOpen, openRating, handleRating }) => {
   const [isBreak, setIsBreak] = useState(false)
   const [isRunning, setIsRunning] = useState(false)
 
-  const defaultWork = 5
-  const defaultBreak = 3
-
-  let initialTime = currentUser?.profile?.workDuration || defaultWork
-  const [time, setTime] = useState(initialTime)
+  const [time, setTime] = useState(settings.workDuration)
 
   useEffect(() => {
     let interval
@@ -25,9 +21,7 @@ const Timer = ({ settings, isRatingOpen, openRating, handleRating }) => {
           if (time === 1 && settings.soundEnabled) new Audio(bell).play()
         } else if (time === 0) {
           /* flip time to the opposite after timer is done */
-          let newTime = isBreak
-            ? currentUser?.profile?.workDuration || defaultWork
-            : currentUser?.profile?.breakDuration || defaultBreak
+          let newTime = isBreak ? settings.workDuration : settings.breakDuration
           if (!settings.autoStart) {
             if (!isBreak) openRating()
             setIsRunning(false)
@@ -43,9 +37,7 @@ const Timer = ({ settings, isRatingOpen, openRating, handleRating }) => {
   }, [time, isRunning, isBreak, currentUser, settings, openRating])
 
   const reset = () => {
-    let newTime = isBreak
-      ? currentUser?.profile?.breakDuration || defaultBreak
-      : currentUser?.profile?.workDuration || defaultWork
+    let newTime = isBreak ? settings.breakDuration : settings.workDuration
     setTime(newTime)
     setIsRunning(false)
   }

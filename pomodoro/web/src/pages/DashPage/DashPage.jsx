@@ -13,25 +13,28 @@ const UPDATE_PROFILE_SETTINGS = gql`
     updateProfile(id: $id, input: $input) {
       soundEnabled
       autoStart
+      workDuration
+      breakDuration
     }
   }
 `
 
 const DashPage = () => {
   const { currentUser, loading } = useAuth()
-
   if (loading) return <p>Loading...</p>
 
   const defaultSettings = {
     soundEnabled: currentUser?.profile?.soundEnabled || true,
     autoStart: currentUser?.profile?.autoStart || false,
+    workDuration: currentUser?.profile?.workDuration || 1500,
+    breakDuration: currentUser?.profile?.breakDuration || 300,
   }
 
   const [updateSettings] = useMutation(UPDATE_PROFILE_SETTINGS)
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const [isSettingsOpen, setIsSettingsOpen] = useState(false)
-  const [settings, setSettings] = useState(defaultSettings)
   const [isRatingOpen, setIsRatingOpen] = useState(false)
+  const [settings, setSettings] = useState(defaultSettings)
 
   //Navbar State
   const toggleDropdown = () => {
@@ -46,14 +49,15 @@ const DashPage = () => {
         input: {
           soundEnabled: data.soundEnabled,
           autoStart: data.autoStart,
-          workDuration: data.pomodoroTime,
-          breakDuration: data.breakTime,
+          workDuration: data.workDuration,
+          breakDuration: data.breakDuration,
         },
       },
     })
     //console.log(data)
     toast('Saved!')
     setSettings(data)
+    console.log(settings)
   }
 
   //open and close settings modal

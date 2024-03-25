@@ -45,20 +45,20 @@ const SettingsModal = ({ isOpen, onClose, settings }) => {
             onChange={handleAutoStartChange}
           />
           <br />
-          <Label htmlFor="pomodoroTime" className="me-2">
+          <Label htmlFor="workDuration" className="me-2">
             Pomodoro:
           </Label>
           <NumberField
-            name="workTime"
+            name="workDuration"
             className="right-0 mb-4 rounded-md border-2 border-black"
           />
           <br />
 
-          <Label htmlFor="breakTime" className="me-2">
+          <Label htmlFor="breakDuration" className="me-2">
             Break:
           </Label>
           <NumberField
-            name="breakTime"
+            name="breakDuration"
             className="mb-4 rounded-md border-2 border-black"
           />
           <br />
