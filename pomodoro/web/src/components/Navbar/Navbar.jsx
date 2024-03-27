@@ -1,5 +1,3 @@
-import { useState } from 'react'
-
 import { Transition } from '@headlessui/react'
 
 import { Link, routes } from '@redwoodjs/router'
@@ -9,7 +7,7 @@ import { useTimerContext } from 'src/layouts/TimerLayout'
 
 import SettingsModal from '../SettingsModal/SettingsModal'
 
-const Navbar = ({ saveSettings, settings }) => {
+const Navbar = () => {
   const { isAuthenticated, logIn, logOut } = useAuth()
 
   const { isSettingsOpen, setIsSettingsOpen, isNavMenuOpen, setIsNavMenuOpen } =
@@ -152,7 +150,7 @@ const Navbar = ({ saveSettings, settings }) => {
           )}
         </Transition>
       </nav>
-      <SettingsModal saveSettings={saveSettings} settings={settings} />
+      <SettingsModal />
     </div>
   )
 }

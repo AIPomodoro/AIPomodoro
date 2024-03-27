@@ -1,5 +1,3 @@
-import { useState } from 'react'
-
 import {
   Form,
   Label,
@@ -11,11 +9,16 @@ import {
 
 import { useTimerContext } from 'src/layouts/TimerLayout'
 
-const SettingsModal = ({ saveSettings, settings }) => {
-  const [soundEnabled, setSoundEnabled] = useState(settings.soundEnabled)
-  const [autoStart, setAutoStart] = useState(settings.autoStart)
-
-  const { isSettingsOpen, setIsSettingsOpen } = useTimerContext()
+const SettingsModal = () => {
+  const {
+    isSettingsOpen,
+    setIsSettingsOpen,
+    saveSettings,
+    soundEnabled,
+    setSoundEnabled,
+    autoStart,
+    setAutoStart,
+  } = useTimerContext()
 
   if (!isSettingsOpen) return null
 
