@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState, createContext, useContext } from 'react'
 
 import { useMutation } from '@redwoodjs/web'
 
@@ -12,9 +12,15 @@ const UPDATE_PROFILE = gql`
   }
 `
 
+const TimerContext = createContext()
+export const useTimerContext = () => useContext(TimerContext)
+
 const TimerLayout = ({ children }) => {
   const { isAuthenticated, currentUser, userMetadata, loading } = useAuth()
-  const [update] = useMutation(UPDATE_PROFILE)
+  const [updateEmail] = useMutation(UPDATE_PROFILE)
+
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false)
+  const [isNavMenuOpen, setIsNavMenuOpen] = useState(false)
 
   //update user email
   useEffect(() => {
@@ -24,14 +30,14 @@ const TimerLayout = ({ children }) => {
       userMetadata?.email &&
       isAuthenticated
     ) {
-      update({
+      updateEmail({
         variables: {
           id: currentUser?.profile?.id,
           input: { email: userMetadata?.email },
         },
       })
     }
-  }, [currentUser, isAuthenticated, userMetadata, update])
+  }, [currentUser, isAuthenticated, userMetadata, updateEmail])
 
   if (loading) {
     return <p>Loading...</p>
@@ -39,8 +45,17 @@ const TimerLayout = ({ children }) => {
 
   return (
     <>
-      {/* <Navbar isDropdownOpen={isDropdownOpen} toggleDropdown={toggleDropdown} /> */}
-      <main>{children}</main>
+      <TimerContext.Provider
+        value={{
+          isSettingsOpen,
+          setIsSettingsOpen,
+          isNavMenuOpen,
+          setIsNavMenuOpen,
+        }}
+      >
+        {/* <Navbar isDropdownOpen={isDropdownOpen} toggleDropdown={toggleDropdown} /> */}
+        <main>{children}</main>
+      </TimerContext.Provider>
     </>
   )
 }

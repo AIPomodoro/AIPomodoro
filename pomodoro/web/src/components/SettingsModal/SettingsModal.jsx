@@ -9,14 +9,19 @@ import {
   FieldError,
 } from '@redwoodjs/forms'
 
-const SettingsModal = ({ isOpen, saveSettings, toggleSettings, settings }) => {
+import { useTimerContext } from 'src/layouts/TimerLayout'
+
+const SettingsModal = ({ saveSettings, settings }) => {
   const [soundEnabled, setSoundEnabled] = useState(settings.soundEnabled)
   const [autoStart, setAutoStart] = useState(settings.autoStart)
-  if (!isOpen) return null
+
+  const { isSettingsOpen, setIsSettingsOpen } = useTimerContext()
+
+  if (!isSettingsOpen) return null
 
   const handleSubmit = (data) => {
     saveSettings(data)
-    toggleSettings()
+    setIsSettingsOpen(false)
   }
 
   const handleSoundEnabledChange = () => setSoundEnabled(!soundEnabled)
@@ -74,7 +79,7 @@ const SettingsModal = ({ isOpen, saveSettings, toggleSettings, settings }) => {
           <br />
           <div className="flex justify-between">
             <Submit>Save</Submit>
-            <button onClick={toggleSettings}>Cancel</button>
+            <button onClick={() => setIsSettingsOpen(false)}>Cancel</button>
           </div>
         </Form>
       </div>

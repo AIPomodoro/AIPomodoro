@@ -8,6 +8,7 @@ import { useAuth } from 'src/auth'
 import Navbar from 'src/components/Navbar'
 import RatingModal from 'src/components/RatingModal/RatingModal'
 import Timer from 'src/components/Timer/Timer'
+import { useTimerContext } from 'src/layouts/TimerLayout'
 
 import bell from '../../../assets/bell.wav'
 
@@ -22,7 +23,7 @@ const UPDATE_PROFILE_SETTINGS = gql`
   }
 `
 
-const DashPage = () => {
+const DashPage = ({ test }) => {
   const { currentUser, loading } = useAuth()
   if (loading) return <p>Loading...</p>
 
@@ -34,8 +35,9 @@ const DashPage = () => {
   }
 
   const [updateSettings] = useMutation(UPDATE_PROFILE_SETTINGS)
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
-  const [isSettingsOpen, setIsSettingsOpen] = useState(false)
+  //const [isSettingsOpen, setIsSettingsOpen] = useState(false)
+  //TESTING
+
   const [isRatingOpen, setIsRatingOpen] = useState(false)
   const [settings, setSettings] = useState(defaultSettings)
 
@@ -73,11 +75,6 @@ const DashPage = () => {
     setIsRunning(false)
   }
 
-  //Navbar State
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen)
-  }
-
   //save new settings
   const saveSettings = (data) => {
     if (data.workDuration) {
@@ -105,8 +102,6 @@ const DashPage = () => {
     })
     toast('Saved!')
 
-    //TODO: create a new settings object here.
-
     setSettings(data)
 
     setIsRunning(false)
@@ -115,11 +110,6 @@ const DashPage = () => {
     } else if (data.workDuration) {
       setTime(data.workDuration)
     }
-  }
-
-  //open and close settings modal
-  const toggleSettings = () => {
-    setIsSettingsOpen(!isSettingsOpen)
   }
 
   const toggleRunning = () => {
@@ -134,18 +124,12 @@ const DashPage = () => {
 
   return (
     <>
+      <h1>{test}</h1>
       <Toaster />
       <div>
         <Metadata title="Dash" description="Dash page" />
 
-        <Navbar
-          isDropdownOpen={isDropdownOpen}
-          toggleDropdown={toggleDropdown}
-          isSettingsOpen={isSettingsOpen}
-          toggleSettings={toggleSettings}
-          saveSettings={saveSettings}
-          settings={settings}
-        />
+        <Navbar saveSettings={saveSettings} settings={settings} />
 
         <div className="flex h-48 justify-center">
           <Timer

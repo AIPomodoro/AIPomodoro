@@ -1,3 +1,4 @@
+import { useTimerContext } from 'src/layouts/TimerLayout'
 const Timer = ({ time, isRunning, toggleRunning, isBreak, reset }) => {
   return (
     <div className="m-auto w-auto rounded-lg bg-slate-500 p-5 text-center font-medium tracking-tighter">
