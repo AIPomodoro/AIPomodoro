@@ -11,6 +11,7 @@ export const schema = gql`
   type Query {
     journalEntries: [JournalEntry!]! @requireAuth
     journalEntry(id: Int!): JournalEntry @requireAuth
+    profilesJournal(profileId: Int!): [JournalEntry!]! @requireAuth
   }
 
   input CreateJournalEntryInput {
@@ -34,4 +35,13 @@ export const schema = gql`
     ): JournalEntry! @requireAuth
     deleteJournalEntry(id: Int!): JournalEntry! @requireAuth
   }
+  # type ProfilesJournal {
+  #   profileId: Int!
+  #   journalEntries: [JournalEntry!]!
+  # }
+  # extend type Query {
+  #   profilesJournal: [ProfilesJournal!]! @requireAuth
+  # }
+
+
 `

@@ -1,22 +1,15 @@
-import React, { useState } from 'react'
-
-import { Metadata } from '@redwoodjs/web'
-
-import { useAuth } from 'src/auth'
-import JournalModalCell from 'src/components/JournalModalCell/JournalModalCell'
-import RatingModal from 'src/components/RatingModal/RatingModal'
-import Timer from 'src/components/Timer/Timer'
-import TimerCell from 'src/components/TimerCell/TimerCell'
-import { useTimerContext } from 'src/layouts/TimerLayout'
+import React, { useState } from 'react';
+import { Metadata } from '@redwoodjs/web';
+import { useAuth } from 'src/auth';
+import RatingModal from 'src/components/RatingModal/RatingModal';
+import Timer from 'src/components/Timer/Timer';
+import { useTimerContext } from 'src/layouts/TimerLayout';
 
 const DashPage = () => {
-  const { loading } = useAuth()
-  const [isJournalOpen, setIsJournalOpen] = useState(false)
-  const { isRatingOpen } = useTimerContext()
+  const { loading } = useAuth();
+  const { isRatingOpen } = useTimerContext();
 
   if (loading) return <p>Loading...</p>
-
-  const toggleJournalModal = () => setIsJournalOpen(!isJournalOpen)
 
   return (
     <>

@@ -9,7 +9,7 @@ import Navbar from 'src/components/Navbar'
 <<<<<<< HEAD
 =======
 import bell from '../../../assets/bell.wav'
-import JournalModal from 'src/components/JournalModal/JournalModal'
+import JournalModalCell from 'src/components/JournalModalCell/JournalModalCell'
 
 >>>>>>> a8ab851ee11372eec343e4b77f249d94d1bdd602
 const UPDATE_PROFILE_EMAIL = gql`
@@ -86,7 +86,7 @@ const TimerLayout = ({ children }) => {
         }}
       >
         <Navbar onJournalButtonClick={toggleJournalModal} />
-        {isJournalOpen && <JournalModal onClose={toggleJournalModal} />}
+        {isJournalOpen && <JournalModalCell onClose={toggleJournalModal} />}
         <main>{children}</main>
       </TimerContext.Provider>
 >>>>>>> a8ab851ee11372eec343e4b77f249d94d1bdd602
