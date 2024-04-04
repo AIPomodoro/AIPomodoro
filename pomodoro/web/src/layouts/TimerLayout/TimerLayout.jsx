@@ -6,6 +6,12 @@ import { Toaster, toast } from '@redwoodjs/web/toast'
 import { useAuth } from 'src/auth'
 import Navbar from 'src/components/Navbar'
 
+<<<<<<< HEAD
+=======
+import bell from '../../../assets/bell.wav'
+import JournalModal from 'src/components/JournalModal/JournalModal'
+
+>>>>>>> a8ab851ee11372eec343e4b77f249d94d1bdd602
 const UPDATE_PROFILE_EMAIL = gql`
   mutation UpdateProfileMutation($id: Int!, $input: UpdateProfileInput!) {
     updateProfile(id: $id, input: $input) {
@@ -42,11 +48,48 @@ const TimerLayout = ({ children }) => {
 
   toast('Saved!')
 
+  const [isJournalOpen, setIsJournalOpen] = useState(false);
+
+  const toggleJournalModal = () => {
+    setIsJournalOpen(!isJournalOpen);
+  };
   return (
     <>
       <Toaster />
+<<<<<<< HEAD
       <Navbar />
       <main>{children}</main>
+=======
+      <TimerContext.Provider
+        value={{
+          isSettingsOpen,
+          setIsSettingsOpen,
+          isNavMenuOpen,
+          setIsNavMenuOpen,
+          isBreak,
+          setIsBreak,
+          isRunning,
+          setIsRunning,
+          isRatingOpen,
+          setIsRatingOpen,
+          handleRating,
+          settings,
+          setSettings,
+          saveSettings,
+          time,
+          setTime,
+          resetTimer,
+          soundEnabled,
+          setSoundEnabled,
+          autoStart,
+          setAutoStart,
+        }}
+      >
+        <Navbar onJournalButtonClick={toggleJournalModal} />
+        {isJournalOpen && <JournalModal onClose={toggleJournalModal} />}
+        <main>{children}</main>
+      </TimerContext.Provider>
+>>>>>>> a8ab851ee11372eec343e4b77f249d94d1bdd602
     </>
   )
 }
