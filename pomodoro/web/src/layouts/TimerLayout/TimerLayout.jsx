@@ -7,6 +7,7 @@ import { useAuth } from 'src/auth'
 import Navbar from 'src/components/Navbar'
 
 import bell from '../../../assets/bell.wav'
+import JournalModal from 'src/components/JournalModal/JournalModal'
 
 const UPDATE_PROFILE_EMAIL = gql`
   mutation UpdateProfileMutation($id: Int!, $input: UpdateProfileInput!) {
@@ -146,6 +147,11 @@ const TimerLayout = ({ children }) => {
     setIsRatingOpen(false)
   }
 
+  const [isJournalOpen, setIsJournalOpen] = useState(false);
+
+  const toggleJournalModal = () => {
+    setIsJournalOpen(!isJournalOpen);
+  };
   return (
     <>
       <Toaster />
@@ -174,7 +180,8 @@ const TimerLayout = ({ children }) => {
           setAutoStart,
         }}
       >
-        <Navbar />
+        <Navbar onJournalButtonClick={toggleJournalModal} />
+        {isJournalOpen && <JournalModal onClose={toggleJournalModal} />}
         <main>{children}</main>
       </TimerContext.Provider>
     </>
