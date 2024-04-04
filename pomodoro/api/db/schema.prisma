@@ -1,0 +1,51 @@
+// Don't forget to tell Prisma about your edits to this file using
+// `yarn rw prisma migrate dev` or `yarn rw prisma db push`.
+// `migrate` is like committing while `push` is for prototyping.
+// Read more about both here:
+// https://www.prisma.io/docs/orm/prisma-migrate
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = "native"
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  userId    String   @unique //Auth0.sub claim
+  createdAt DateTime @default(now())
+  profile   Profile?
+}
+
+model Profile {
+  id             Int            @id @default(autoincrement())
+  createdAt      DateTime       @default(now())
+  userId         Int            @unique
+  user           User           @relation(fields: [userId], references: [id])
+  email          String?
+  firstName      String?
+  lastName       String?
+  phone          String?
+  journalEntries JournalEntry[]
+  lastLogin      DateTime       @default(now())
+  currentStreak  Int
+
+  // timer settings
+  soundEnabled  Boolean
+  autoStart     Boolean
+  workDuration  Int
+  breakDuration Int
+}
+
+model JournalEntry {
+  id        Int      @id @default(autoincrement())
+  profileId Int
+  profile   Profile  @relation(fields: [profileId], references: [id])
+  title     String
+  content   String
+  createdAt DateTime @default(now())
+}
