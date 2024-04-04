@@ -7,7 +7,7 @@ import { useAuth } from 'src/auth'
 import Navbar from 'src/components/Navbar'
 
 import bell from '../../../assets/bell.wav'
-import JournalModal from 'src/components/JournalModal/JournalModal'
+import JournalModalCell from 'src/components/JournalModalCell/JournalModalCell'
 
 const UPDATE_PROFILE_EMAIL = gql`
   mutation UpdateProfileMutation($id: Int!, $input: UpdateProfileInput!) {
@@ -181,7 +181,7 @@ const TimerLayout = ({ children }) => {
         }}
       >
         <Navbar onJournalButtonClick={toggleJournalModal} />
-        {isJournalOpen && <JournalModal onClose={toggleJournalModal} />}
+        {isJournalOpen && <JournalModalCell onClose={toggleJournalModal} />}
         <main>{children}</main>
       </TimerContext.Provider>
     </>

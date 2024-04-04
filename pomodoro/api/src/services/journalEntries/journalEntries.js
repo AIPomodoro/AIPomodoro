@@ -34,3 +34,10 @@ export const JournalEntry = {
     return db.journalEntry.findUnique({ where: { id: root?.id } }).profile()
   },
 }
+
+export const profilesJournal = ({ profileId }) => {
+
+  return db.journalEntry.findMany({
+    where: { profileId },
+  })
+}
