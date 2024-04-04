@@ -9,7 +9,7 @@ const DashPage = () => {
   const { loading } = useAuth();
   const { isRatingOpen } = useTimerContext();
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <p>Loading...</p>
 
   return (
     <>
@@ -19,7 +19,7 @@ const DashPage = () => {
       </div>
       {isRatingOpen && <RatingModal />}
     </>
-  );
-};
+  )
+}
 
-export default DashPage;
+export default DashPage

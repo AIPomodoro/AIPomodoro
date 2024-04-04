@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+import { useTimerContext } from 'src/providers/contexts/TimerContext'
+=======
 import { useState, useEffect } from 'react'
 
 import { useAuth } from 'src/auth'
@@ -49,6 +52,7 @@ const Timer = ({ settings, isRatingOpen, openRating, handleRating }) => {
     setTime(newTime)
     setIsRunning(false)
   }
+>>>>>>> a8ab851ee11372eec343e4b77f249d94d1bdd602
 
   return (
     <div className="m-auto w-auto rounded-lg bg-slate-500 p-5 text-center font-medium tracking-tighter">

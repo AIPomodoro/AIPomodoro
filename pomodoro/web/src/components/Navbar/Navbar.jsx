@@ -3,7 +3,7 @@ import { Transition } from '@headlessui/react'
 import { Link, routes } from '@redwoodjs/router'
 
 import { useAuth } from 'src/auth'
-import { useTimerContext } from 'src/layouts/TimerLayout'
+import { useTimerContext } from 'src/providers/contexts/TimerContext'
 
 import SettingsModal from '../SettingsModal/SettingsModal'
 
