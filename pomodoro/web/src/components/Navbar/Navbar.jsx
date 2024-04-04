@@ -7,7 +7,7 @@ import { useTimerContext } from 'src/providers/contexts/TimerContext'
 
 import SettingsModal from '../SettingsModal/SettingsModal'
 
-const Navbar = ( { onJournalButtonClick }) => {
+const Navbar = ({ onJournalButtonClick }) => {
   const { isAuthenticated, logIn, logOut } = useAuth()
 
   const { isSettingsOpen, setIsSettingsOpen, isNavMenuOpen, setIsNavMenuOpen } =
@@ -37,9 +37,10 @@ const Navbar = ( { onJournalButtonClick }) => {
                 </button>
                 {isAuthenticated ? (
                   <>
-                    <button 
-                    onClick={onJournalButtonClick}
-                    className="h-10 w-20 rounded-md p-2 transition-all duration-150 ease-in-out hover:bg-gray-500">
+                    <button
+                      onClick={onJournalButtonClick}
+                      className="h-10 w-20 rounded-md p-2 transition-all duration-150 ease-in-out hover:bg-gray-500"
+                    >
                       Journal
                     </button>
                     {/* TODO implement profile page */}
@@ -133,7 +134,7 @@ const Navbar = ( { onJournalButtonClick }) => {
                 {isAuthenticated ? (
                   <>
                     <li>
-                      <button>Journal</button>
+                      <button onClick={onJournalButtonClick}>Journal</button>
                     </li>
                     <li>
                       <Link to={routes.dash()}>Profile</Link>
