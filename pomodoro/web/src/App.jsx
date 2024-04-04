@@ -5,6 +5,7 @@ import FatalErrorPage from 'src/pages/FatalErrorPage'
 import Routes from 'src/Routes'
 
 import { AuthProvider, useAuth } from './auth'
+import AllContextProviders from './providers/contexts/AllContext'
 
 import './scaffold.css'
 import './index.css'
@@ -14,7 +15,9 @@ const App = () => (
     <RedwoodProvider titleTemplate="%PageTitle | %AppTitle">
       <AuthProvider>
         <RedwoodApolloProvider useAuth={useAuth}>
-          <Routes />
+          <AllContextProviders>
+            <Routes />
+          </AllContextProviders>
         </RedwoodApolloProvider>
       </AuthProvider>
     </RedwoodProvider>

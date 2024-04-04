@@ -3,7 +3,7 @@ import { Metadata } from '@redwoodjs/web'
 import { useAuth } from 'src/auth'
 import RatingModal from 'src/components/RatingModal/RatingModal'
 import Timer from 'src/components/Timer/Timer'
-import { useTimerContext } from 'src/layouts/TimerLayout'
+import { useTimerContext } from 'src/providers/contexts/TimerContext'
 
 const DashPage = () => {
   const { loading } = useAuth()

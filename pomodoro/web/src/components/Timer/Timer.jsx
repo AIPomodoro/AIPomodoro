@@ -1,4 +1,4 @@
-import { useTimerContext } from 'src/layouts/TimerLayout'
+import { useTimerContext } from 'src/providers/contexts/TimerContext'
 
 const Timer = () => {
   const { time, isRunning, setIsRunning, isBreak, resetTimer } =
