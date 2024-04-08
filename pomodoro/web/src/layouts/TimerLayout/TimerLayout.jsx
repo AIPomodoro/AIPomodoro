@@ -43,7 +43,6 @@ const TimerLayout = ({ children }) => {
     }
   }, [currentUser, isAuthenticated, userMetadata, updateProfileEmail])
 
-  toast('Saved!')
   const [isJournalOpen, setIsJournalOpen] = useState(false)
 
   const toggleJournalModal = () => {
