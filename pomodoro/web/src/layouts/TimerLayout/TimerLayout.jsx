@@ -26,7 +26,7 @@ const TimerLayout = ({ children }) => {
 
   const [updateProfileEmail] = useMutation(UPDATE_PROFILE_EMAIL)
 
-  //update user email
+  //update user email, useEffect, so this only happens once
   useEffect(() => {
     if (
       currentUser?.profile?.email == null &&
@@ -49,12 +49,12 @@ const TimerLayout = ({ children }) => {
     setIsJournalOpen(!isJournalOpen)
   }
   return (
-    <>
+    <div className="bg-red-400 h-screen">
       <Toaster />
       <Navbar onJournalButtonClick={toggleJournalModal} />
       {isJournalOpen && <JournalModalCell onClose={toggleJournalModal} />}
       <main>{children}</main>
-    </>
+    </div>
   )
 }
 export default TimerLayout
