@@ -20,6 +20,7 @@ CREATE TABLE "Profile" (
     "currentStreak" INTEGER NOT NULL,
     "soundEnabled" BOOLEAN NOT NULL,
     "autoStart" BOOLEAN NOT NULL,
+    "autoAdjust" BOOLEAN NOT NULL,
     "workDuration" INTEGER NOT NULL,
     "breakDuration" INTEGER NOT NULL,
 

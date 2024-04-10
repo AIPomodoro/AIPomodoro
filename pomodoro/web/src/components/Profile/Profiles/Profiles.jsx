@@ -43,8 +43,6 @@ const ProfilesList = ({ profiles }) => {
             <th>Id</th>
             <th>Created at</th>
             <th>User id</th>
-            <th>Work duration</th>
-            <th>Break duration</th>
             <th>Email</th>
             <th>First name</th>
             <th>Last name</th>
@@ -53,6 +51,9 @@ const ProfilesList = ({ profiles }) => {
             <th>Current streak</th>
             <th>Sound enabled</th>
             <th>Auto start</th>
+            <th>Auto adjust</th>
+            <th>Work duration</th>
+            <th>Break duration</th>
             <th>&nbsp;</th>
           </tr>
         </thead>
@@ -62,8 +63,6 @@ const ProfilesList = ({ profiles }) => {
               <td>{truncate(profile.id)}</td>
               <td>{timeTag(profile.createdAt)}</td>
               <td>{truncate(profile.userId)}</td>
-              <td>{truncate(profile.workDuration)}</td>
-              <td>{truncate(profile.breakDuration)}</td>
               <td>{truncate(profile.email)}</td>
               <td>{truncate(profile.firstName)}</td>
               <td>{truncate(profile.lastName)}</td>
@@ -72,6 +71,9 @@ const ProfilesList = ({ profiles }) => {
               <td>{truncate(profile.currentStreak)}</td>
               <td>{checkboxInputTag(profile.soundEnabled)}</td>
               <td>{checkboxInputTag(profile.autoStart)}</td>
+              <td>{checkboxInputTag(profile.autoAdjust)}</td>
+              <td>{truncate(profile.workDuration)}</td>
+              <td>{truncate(profile.breakDuration)}</td>
               <td>
                 <nav className="rw-table-actions">
                   <Link

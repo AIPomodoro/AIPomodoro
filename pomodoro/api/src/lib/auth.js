@@ -56,6 +56,7 @@ export const getCurrentUser = async (decoded) => {
         breakDuration: 300,
         soundEnabled: true,
         autoStart: false,
+        autoAdjust: false,
         currentStreak: 1,
       },
     })

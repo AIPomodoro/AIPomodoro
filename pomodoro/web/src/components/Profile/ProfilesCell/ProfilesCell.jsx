@@ -8,8 +8,6 @@ export const QUERY = gql`
       id
       createdAt
       userId
-      workDuration
-      breakDuration
       email
       firstName
       lastName
@@ -18,6 +16,9 @@ export const QUERY = gql`
       currentStreak
       soundEnabled
       autoStart
+      autoAdjust
+      workDuration
+      breakDuration
     }
   }
 `

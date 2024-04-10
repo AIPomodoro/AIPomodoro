@@ -37,6 +37,7 @@ model Profile {
   // timer settings
   soundEnabled  Boolean
   autoStart     Boolean
+  autoAdjust    Boolean
   workDuration  Int
   breakDuration Int
 }
