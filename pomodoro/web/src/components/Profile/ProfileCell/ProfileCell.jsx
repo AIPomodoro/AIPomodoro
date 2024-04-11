@@ -11,6 +11,7 @@ export const QUERY = gql`
       lastName
       phone
       lastLogin
+      lastDay
       currentStreak
       soundEnabled
       autoStart

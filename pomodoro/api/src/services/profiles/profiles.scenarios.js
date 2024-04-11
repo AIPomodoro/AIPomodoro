@@ -2,24 +2,24 @@ export const standard = defineScenario({
   profile: {
     one: {
       data: {
-        currentStreak: 1119181,
+        currentStreak: 9609876,
         soundEnabled: true,
         autoStart: true,
         autoAdjust: true,
-        workDuration: 8993750,
-        breakDuration: 6387873,
-        user: { create: { userId: 'String3351130' } },
+        workDuration: 5673941,
+        breakDuration: 145269,
+        user: { create: { userId: 'String436082' } },
       },
     },
     two: {
       data: {
-        currentStreak: 3517950,
+        currentStreak: 2636252,
         soundEnabled: true,
         autoStart: true,
         autoAdjust: true,
-        workDuration: 9021451,
-        breakDuration: 8058816,
-        user: { create: { userId: 'String3105782' } },
+        workDuration: 8576430,
+        breakDuration: 1394753,
+        user: { create: { userId: 'String9078856' } },
       },
     },
   },

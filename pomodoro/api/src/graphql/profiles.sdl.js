@@ -10,6 +10,7 @@ export const schema = gql`
     phone: String
     journalEntries: [JournalEntry]!
     lastLogin: DateTime!
+    lastDay: DateTime!
     currentStreak: Int!
     soundEnabled: Boolean!
     autoStart: Boolean!
@@ -30,6 +31,7 @@ export const schema = gql`
     lastName: String
     phone: String
     lastLogin: DateTime!
+    lastDay: DateTime!
     currentStreak: Int!
     soundEnabled: Boolean!
     autoStart: Boolean!
@@ -45,6 +47,7 @@ export const schema = gql`
     lastName: String
     phone: String
     lastLogin: DateTime
+    lastDay: DateTime
     currentStreak: Int
     soundEnabled: Boolean
     autoStart: Boolean

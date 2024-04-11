@@ -9,22 +9,26 @@ import Navbar from 'src/components/Navbar'
 
 import bell from '../../../assets/bell.wav'
 
-const UPDATE_PROFILE_EMAIL = gql`
+const UPDATE_PROFILE = gql`
   mutation UpdateProfileMutation($id: Int!, $input: UpdateProfileInput!) {
     updateProfile(id: $id, input: $input) {
       email
+      lastLogin
+      currentStreak
     }
   }
 `
 
 const TimerLayout = ({ children }) => {
   const { isAuthenticated, currentUser, userMetadata, loading } = useAuth()
-
   if (loading) {
     return <p>Loading...</p>
   }
+  const [updateProfile] = useMutation(UPDATE_PROFILE)
 
-  const [updateProfileEmail] = useMutation(UPDATE_PROFILE_EMAIL)
+  let lastLogin
+  let currentLogin
+  let lastDay
 
   //update user email, useEffect, so this only happens once
   useEffect(() => {
@@ -34,14 +38,47 @@ const TimerLayout = ({ children }) => {
       userMetadata?.email &&
       isAuthenticated
     ) {
-      updateProfileEmail({
+      updateProfile({
         variables: {
           id: currentUser?.profile?.id,
-          input: { email: userMetadata?.email },
+          input: { 
+            email: userMetadata?.email,  
+          },
         },
       })
     }
-  }, [currentUser, isAuthenticated, userMetadata, updateProfileEmail])
+    else if (isAuthenticated && currentUser){
+      currentLogin = new Date()
+      lastLogin = new Date(Date.parse(currentUser?.profile?.lastLogin))
+      lastDay = new Date(Date.parse(currentUser?.profile?.lastDay))
+      console.log(typeof lastDay)
+
+      let diff = currentLogin - lastLogin // result in ms
+
+      let streak;
+      if (diff > 86400000) {
+        //last login more than a day ago, reset streak
+        streak = 0
+      } 
+      else if (currentLogin.getDate() !== lastLogin.getDate()){
+        //otherwise if it's a different date increment the streak
+        streak = currentUser?.profile?.currentStreak + 1
+        lastDay = currentLogin
+      }
+
+      updateProfile({
+        variables: {
+            id: currentUser?.profile?.id,
+            input: { 
+              email: userMetadata?.email,
+              lastLogin: new Date(),
+              streak: streak
+            },
+        }
+      })
+    }
+
+  }, [currentUser, isAuthenticated, userMetadata, updateProfile])
 
   const [isJournalOpen, setIsJournalOpen] = useState(false)
 

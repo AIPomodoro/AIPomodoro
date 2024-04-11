@@ -29,32 +29,32 @@ describe('profiles', () => {
     const result = await createProfile({
       input: {
         userId: scenario.profile.two.userId,
-        currentStreak: 1205937,
+        currentStreak: 1069678,
         soundEnabled: true,
         autoStart: true,
         autoAdjust: true,
-        workDuration: 8147877,
-        breakDuration: 4211553,
+        workDuration: 1626637,
+        breakDuration: 6237029,
       },
     })
 
     expect(result.userId).toEqual(scenario.profile.two.userId)
-    expect(result.currentStreak).toEqual(1205937)
+    expect(result.currentStreak).toEqual(1069678)
     expect(result.soundEnabled).toEqual(true)
     expect(result.autoStart).toEqual(true)
     expect(result.autoAdjust).toEqual(true)
-    expect(result.workDuration).toEqual(8147877)
-    expect(result.breakDuration).toEqual(4211553)
+    expect(result.workDuration).toEqual(1626637)
+    expect(result.breakDuration).toEqual(6237029)
   })
 
   scenario('updates a profile', async (scenario) => {
     const original = await profile({ id: scenario.profile.one.id })
     const result = await updateProfile({
       id: original.id,
-      input: { currentStreak: 8547824 },
+      input: { currentStreak: 5223715 },
     })
 
-    expect(result.currentStreak).toEqual(8547824)
+    expect(result.currentStreak).toEqual(5223715)
   })
 
   scenario('deletes a profile', async (scenario) => {
