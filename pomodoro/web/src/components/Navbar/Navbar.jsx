@@ -3,19 +3,19 @@ import { Transition } from '@headlessui/react'
 import { Link, routes } from '@redwoodjs/router'
 
 import { useAuth } from 'src/auth'
-import { useTimerContext } from 'src/layouts/TimerLayout'
+import { useTimerContext } from 'src/providers/contexts/TimerContext'
 
 import SettingsModal from '../SettingsModal/SettingsModal'
 
-const Navbar = ( { onJournalButtonClick }) => {
-  const { isAuthenticated, logIn, logOut } = useAuth()
+const Navbar = ({ onJournalButtonClick }) => {
+  const { isAuthenticated, currentUser, loading, logIn, logOut } = useAuth()
 
   const { isSettingsOpen, setIsSettingsOpen, isNavMenuOpen, setIsNavMenuOpen } =
     useTimerContext()
 
   return (
     <div>
-      <nav className="mb-4 bg-gray-800 text-white">
+      <nav className="mb-4 bg-red-50 text-red-800">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             <div className="flex items-center space-x-4">
@@ -24,33 +24,37 @@ const Navbar = ( { onJournalButtonClick }) => {
                 src="https://upload.wikimedia.org/wikipedia/commons/6/6e/533-tomato.svg" //def change this
                 alt="Workflow"
               />
-              {/* TODO implement streak */}
-              {isAuthenticated && <p>streak</p>}
+              {isAuthenticated && !loading && (
+                <p className="text-red-900">
+                  {currentUser?.profile?.currentStreak}
+                </p>
+              )}
             </div>
             <div className="flex items-center space-x-4">
               <div className="hidden items-center space-x-4 md:block">
-                <button
+                {/* <button
                   onClick={() => setIsSettingsOpen(!isSettingsOpen)}
-                  className="h-10 w-20 rounded-md p-2 transition-all duration-150 ease-in-out hover:bg-gray-500"
+                  className="h-10 w-20 rounded-md p-2 transition-all duration-150 ease-in-out hover:bg-red-100"
                 >
                   Settings
-                </button>
+                </button> */}
                 {isAuthenticated ? (
                   <>
-                    <button 
-                    onClick={onJournalButtonClick}
-                    className="h-10 w-20 rounded-md p-2 transition-all duration-150 ease-in-out hover:bg-gray-500">
+                    <button
+                      onClick={onJournalButtonClick}
+                      className="h-10 w-20 rounded-md p-2 transition-all duration-150 ease-in-out hover:bg-red-100"
+                    >
                       Journal
                     </button>
                     {/* TODO implement profile page */}
-                    <Link to={routes.dash()}>
-                      <button className="h-10 w-20 rounded-md p-2 transition-all duration-150 ease-in-out hover:bg-gray-500">
-                        Profile
-                      </button>
-                    </Link>
+                    {/* <Link to={routes.dash()}> */}
+                    {/* <button className="h-10 w-20 rounded-md p-2 transition-all duration-150 ease-in-out hover:bg-red-100"> */}
+                    {/* Profile */}
+                    {/* </button> */}
+                    {/* </Link> */}
                     <button
                       onClick={logOut}
-                      className="h-10 w-20 rounded-md p-2 transition-all duration-150 ease-in-out hover:bg-gray-500"
+                      className="h-10 w-20 rounded-md p-2 transition-all duration-150 ease-in-out hover:bg-red-100"
                     >
                       Log Out
                     </button>
@@ -58,7 +62,7 @@ const Navbar = ( { onJournalButtonClick }) => {
                 ) : (
                   <button
                     onClick={logIn}
-                    className="h-10 w-20 rounded-md p-2 transition-all duration-150 ease-in-out hover:bg-gray-500"
+                    className="h-10 w-20 rounded-md p-2 transition-all duration-150 ease-in-out hover:bg-red-100"
                   >
                     Log In
                   </button>
@@ -69,7 +73,7 @@ const Navbar = ( { onJournalButtonClick }) => {
                 <button
                   onClick={() => setIsNavMenuOpen(!isNavMenuOpen)}
                   type="button"
-                  className="inline-flex items-center justify-center rounded-md bg-gray-900 p-2 text-gray-400 hover:bg-gray-800 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                  className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-red-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                   aria-controls="mobile-menu"
                   aria-expanded="false"
                 >
@@ -125,19 +129,19 @@ const Navbar = ( { onJournalButtonClick }) => {
           {(ref) => (
             <div className="md:hidden" id="mobile-menu">
               <ul ref={ref} className="space-y-2 px-2 pb-3 pt-2 sm:px-3">
-                <li>
-                  <button onClick={() => setIsSettingsOpen(!isSettingsOpen)}>
-                    Settings
-                  </button>
-                </li>
+                {/* <li> */}
+                {/* <button onClick={() => setIsSettingsOpen(!isSettingsOpen)}> */}
+                {/* Settings */}
+                {/* </button> */}
+                {/* </li> */}
                 {isAuthenticated ? (
                   <>
                     <li>
-                      <button>Journal</button>
+                      <button onClick={onJournalButtonClick}>Journal</button>
                     </li>
-                    <li>
-                      <Link to={routes.dash()}>Profile</Link>
-                    </li>
+                    {/* <li> */}
+                    {/* <Link to={routes.dash()}>Profile</Link> */}
+                    {/* </li> */}
                     <li>
                       <button onClick={logOut}>Log Out</button>
                     </li>

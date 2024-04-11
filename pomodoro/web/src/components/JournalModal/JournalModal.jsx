@@ -1,46 +1,75 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
-const JournalModal = ({ onClose, onSubmit }) => {
-    const [entry, setEntry] = useState('');
+import { useAuth } from 'src/auth'
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        onSubmit({ content: entry, title: "Journal Entry", profileId: 1 }); // Adjust according to your schema requirements
-        onClose();
-    };
+const JournalModal = ({ onClose, onSubmit, journalEntries }) => {
+  const { currentUser } = useAuth()
+  const [entry, setEntry] = useState('')
 
-    return (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-            <div className="bg-white p-5 rounded-lg shadow-lg max-w-md w-full">
-                <h2 className="text-xl font-semibold mb-4">Journal Entry</h2>
-                <form onSubmit={handleSubmit}>
-                    <textarea
-                        className="w-full p-2 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 block mb-2"
-                        value={entry}
-                        onChange={(e) => setEntry(e.target.value)}
-                        placeholder="What's on your mind?"
-                        rows="5"
-                        required
-                    ></textarea>
-                    <div className="flex justify-between items-center">
-                        <button 
-                            type="submit" 
-                            className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 focus:outline-none focus:bg-blue-700"
-                        >
-                            Save Entry
-                        </button>
-                        <button 
-                            type="button" 
-                            onClick={onClose}
-                            className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
-                        >
-                            Close
-                        </button>
-                    </div>
-                </form>
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    onSubmit({
+      content: entry,
+      title: 'Journal Entry',
+      profileId: currentUser.profile.id,
+    })
+    onClose()
+  }
+
+  return (
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 p-4">
+      <div className="flex w-full max-w-4xl space-x-4 rounded-lg bg-white p-5 shadow-lg">
+        {/* Entry Form Section */}
+        <div className="flex-1">
+          <h2 className="mb-4 text-xl font-semibold">Journal Entry</h2>
+          <form onSubmit={handleSubmit}>
+            <textarea
+              className="mb-2 block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+              value={entry}
+              onChange={(e) => setEntry(e.target.value)}
+              placeholder="What's on your mind?"
+              rows="5"
+              required
+            ></textarea>
+            <div className="flex items-center justify-between">
+              <button
+                type="submit"
+                className="rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-700 focus:bg-blue-700 focus:outline-none"
+              >
+                Save Entry
+              </button>
+              <button
+                type="button"
+                onClick={onClose}
+                className="rounded bg-gray-500 px-4 py-2 text-white hover:bg-gray-700 focus:bg-gray-700 focus:outline-none"
+              >
+                Close
+              </button>
             </div>
+          </form>
         </div>
-    );
-};
 
-export default JournalModal;
+        {/* Entries Display Section */}
+        <div className="flex-1 overflow-auto">
+          <h3 className="mb-2 text-lg font-semibold">Past Entries</h3>
+          <div className="space-y-4">
+            {journalEntries.map((entry) => (
+              <div
+                key={entry.id}
+                className="rounded-lg border border-gray-200 bg-gray-50 p-4"
+              >
+                <h4 className="font-semibold">{entry.title}</h4>
+                <p className="text-sm text-gray-700">{entry.content}</p>
+                <p className="text-xs text-gray-500">
+                  {new Date(entry.createdAt).toLocaleDateString()}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default JournalModal

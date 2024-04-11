@@ -5,7 +5,7 @@
 // https://www.prisma.io/docs/orm/prisma-migrate
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -32,11 +32,13 @@ model Profile {
   phone          String?
   journalEntries JournalEntry[]
   lastLogin      DateTime       @default(now())
+  lastDay        DateTime       @default(now())
   currentStreak  Int
 
   // timer settings
   soundEnabled  Boolean
   autoStart     Boolean
+  autoAdjust    Boolean
   workDuration  Int
   breakDuration Int
 }

@@ -7,7 +7,7 @@ import {
   FieldError,
 } from '@redwoodjs/forms'
 
-import { useTimerContext } from 'src/layouts/TimerLayout'
+import { useTimerContext } from 'src/providers/contexts/TimerContext'
 
 const SettingsModal = () => {
   const {

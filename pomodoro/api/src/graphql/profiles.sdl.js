@@ -4,17 +4,19 @@ export const schema = gql`
     createdAt: DateTime!
     userId: Int!
     user: User!
-    workDuration: Int!
-    breakDuration: Int!
     email: String
     firstName: String
     lastName: String
     phone: String
     journalEntries: [JournalEntry]!
     lastLogin: DateTime!
+    lastDay: DateTime!
     currentStreak: Int!
     soundEnabled: Boolean!
     autoStart: Boolean!
+    autoAdjust: Boolean!
+    workDuration: Int!
+    breakDuration: Int!
   }
 
   type Query {
@@ -24,30 +26,34 @@ export const schema = gql`
 
   input CreateProfileInput {
     userId: Int!
-    workDuration: Int!
-    breakDuration: Int!
     email: String
     firstName: String
     lastName: String
     phone: String
     lastLogin: DateTime!
+    lastDay: DateTime!
     currentStreak: Int!
     soundEnabled: Boolean!
     autoStart: Boolean!
+    autoAdjust: Boolean!
+    workDuration: Int!
+    breakDuration: Int!
   }
 
   input UpdateProfileInput {
     userId: Int
-    workDuration: Int
-    breakDuration: Int
     email: String
     firstName: String
     lastName: String
     phone: String
     lastLogin: DateTime
+    lastDay: DateTime
     currentStreak: Int
     soundEnabled: Boolean
     autoStart: Boolean
+    autoAdjust: Boolean
+    workDuration: Int
+    breakDuration: Int
   }
 
   type Mutation {

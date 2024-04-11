@@ -43,42 +43,6 @@ const ProfileForm = (props) => {
         <FieldError name="userId" className="rw-field-error" />
 
         <Label
-          name="workDuration"
-          className="rw-label"
-          errorClassName="rw-label rw-label-error"
-        >
-          Work duration
-        </Label>
-
-        <NumberField
-          name="workDuration"
-          defaultValue={props.profile?.workDuration}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
-          validation={{ required: true }}
-        />
-
-        <FieldError name="workDuration" className="rw-field-error" />
-
-        <Label
-          name="breakDuration"
-          className="rw-label"
-          errorClassName="rw-label rw-label-error"
-        >
-          Break duration
-        </Label>
-
-        <NumberField
-          name="breakDuration"
-          defaultValue={props.profile?.breakDuration}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
-          validation={{ required: true }}
-        />
-
-        <FieldError name="breakDuration" className="rw-field-error" />
-
-        <Label
           name="email"
           className="rw-label"
           errorClassName="rw-label rw-label-error"
@@ -197,6 +161,59 @@ const ProfileForm = (props) => {
         />
 
         <FieldError name="autoStart" className="rw-field-error" />
+
+        <Label
+          name="autoAdjust"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          Auto adjust
+        </Label>
+
+        <CheckboxField
+          name="autoAdjust"
+          defaultChecked={props.profile?.autoAdjust}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+        />
+
+        <FieldError name="autoAdjust" className="rw-field-error" />
+
+        <Label
+          name="workDuration"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          Work duration
+        </Label>
+
+        <NumberField
+          name="workDuration"
+          defaultValue={props.profile?.workDuration}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+          validation={{ required: true }}
+        />
+
+        <FieldError name="workDuration" className="rw-field-error" />
+
+        <Label
+          name="breakDuration"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          Break duration
+        </Label>
+
+        <NumberField
+          name="breakDuration"
+          defaultValue={props.profile?.breakDuration}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+          validation={{ required: true }}
+        />
+
+        <FieldError name="breakDuration" className="rw-field-error" />
 
         <div className="rw-button-group">
           <Submit disabled={props.loading} className="rw-button rw-button-blue">

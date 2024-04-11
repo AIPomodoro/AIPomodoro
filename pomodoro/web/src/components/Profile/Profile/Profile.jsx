@@ -53,14 +53,6 @@ const Profile = ({ profile }) => {
               <td>{profile.userId}</td>
             </tr>
             <tr>
-              <th>Work duration</th>
-              <td>{profile.workDuration}</td>
-            </tr>
-            <tr>
-              <th>Break duration</th>
-              <td>{profile.breakDuration}</td>
-            </tr>
-            <tr>
               <th>Email</th>
               <td>{profile.email}</td>
             </tr>
@@ -81,6 +73,10 @@ const Profile = ({ profile }) => {
               <td>{timeTag(profile.lastLogin)}</td>
             </tr>
             <tr>
+              <th>Last day</th>
+              <td>{timeTag(profile.lastDay)}</td>
+            </tr>
+            <tr>
               <th>Current streak</th>
               <td>{profile.currentStreak}</td>
             </tr>
@@ -91,6 +87,18 @@ const Profile = ({ profile }) => {
             <tr>
               <th>Auto start</th>
               <td>{checkboxInputTag(profile.autoStart)}</td>
+            </tr>
+            <tr>
+              <th>Auto adjust</th>
+              <td>{checkboxInputTag(profile.autoAdjust)}</td>
+            </tr>
+            <tr>
+              <th>Work duration</th>
+              <td>{profile.workDuration}</td>
+            </tr>
+            <tr>
+              <th>Break duration</th>
+              <td>{profile.breakDuration}</td>
             </tr>
           </tbody>
         </table>

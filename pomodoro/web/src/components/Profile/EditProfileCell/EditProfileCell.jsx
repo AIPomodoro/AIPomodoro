@@ -11,16 +11,18 @@ export const QUERY = gql`
       id
       createdAt
       userId
-      workDuration
-      breakDuration
       email
       firstName
       lastName
       phone
       lastLogin
+      lastDay
       currentStreak
       soundEnabled
       autoStart
+      autoAdjust
+      workDuration
+      breakDuration
     }
   }
 `
@@ -31,16 +33,18 @@ const UPDATE_PROFILE_MUTATION = gql`
       id
       createdAt
       userId
-      workDuration
-      breakDuration
       email
       firstName
       lastName
       phone
       lastLogin
+      lastDay
       currentStreak
       soundEnabled
       autoStart
+      autoAdjust
+      workDuration
+      breakDuration
     }
   }
 `
