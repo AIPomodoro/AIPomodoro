@@ -59,11 +59,15 @@ const TimerLayout = ({ children }) => {
       if (diff > 86400000) {
         //last login more than a day ago, reset streak
         streak = 0
+        lastDay = currentLogin
       } 
       else if (currentLogin.getDate() !== lastLogin.getDate()){
         //otherwise if it's a different date increment the streak
         streak = currentUser?.profile?.currentStreak + 1
         lastDay = currentLogin
+      }
+      else {
+        lastDay = currentUser?.profile?.lastDay
       }
 
       updateProfile({
@@ -72,7 +76,8 @@ const TimerLayout = ({ children }) => {
             input: { 
               email: userMetadata?.email,
               lastLogin: new Date(),
-              streak: streak
+              lastDay: lastDay,
+              streak: streak,
             },
         }
       })
