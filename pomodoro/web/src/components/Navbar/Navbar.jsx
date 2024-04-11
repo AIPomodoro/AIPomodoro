@@ -24,16 +24,20 @@ const Navbar = ({ onJournalButtonClick }) => {
                 src="https://upload.wikimedia.org/wikipedia/commons/6/6e/533-tomato.svg" //def change this
                 alt="Workflow"
               />
-              {isAuthenticated && !loading && <p className="text-red-900">{currentUser?.profile?.currentStreak}</p>}
+              {isAuthenticated && !loading && (
+                <p className="text-red-900">
+                  {currentUser?.profile?.currentStreak}
+                </p>
+              )}
             </div>
             <div className="flex items-center space-x-4">
               <div className="hidden items-center space-x-4 md:block">
-                <button
+                {/* <button
                   onClick={() => setIsSettingsOpen(!isSettingsOpen)}
                   className="h-10 w-20 rounded-md p-2 transition-all duration-150 ease-in-out hover:bg-red-100"
                 >
                   Settings
-                </button>
+                </button> */}
                 {isAuthenticated ? (
                   <>
                     <button
@@ -44,9 +48,9 @@ const Navbar = ({ onJournalButtonClick }) => {
                     </button>
                     {/* TODO implement profile page */}
                     {/* <Link to={routes.dash()}> */}
-                      {/* <button className="h-10 w-20 rounded-md p-2 transition-all duration-150 ease-in-out hover:bg-red-100"> */}
-                        {/* Profile */}
-                      {/* </button> */}
+                    {/* <button className="h-10 w-20 rounded-md p-2 transition-all duration-150 ease-in-out hover:bg-red-100"> */}
+                    {/* Profile */}
+                    {/* </button> */}
                     {/* </Link> */}
                     <button
                       onClick={logOut}
@@ -125,18 +129,18 @@ const Navbar = ({ onJournalButtonClick }) => {
           {(ref) => (
             <div className="md:hidden" id="mobile-menu">
               <ul ref={ref} className="space-y-2 px-2 pb-3 pt-2 sm:px-3">
-                <li>
-                  <button onClick={() => setIsSettingsOpen(!isSettingsOpen)}>
-                    Settings
-                  </button>
-                </li>
+                {/* <li> */}
+                {/* <button onClick={() => setIsSettingsOpen(!isSettingsOpen)}> */}
+                {/* Settings */}
+                {/* </button> */}
+                {/* </li> */}
                 {isAuthenticated ? (
                   <>
                     <li>
                       <button onClick={onJournalButtonClick}>Journal</button>
                     </li>
                     {/* <li> */}
-                      {/* <Link to={routes.dash()}>Profile</Link> */}
+                    {/* <Link to={routes.dash()}>Profile</Link> */}
                     {/* </li> */}
                     <li>
                       <button onClick={logOut}>Log Out</button>
