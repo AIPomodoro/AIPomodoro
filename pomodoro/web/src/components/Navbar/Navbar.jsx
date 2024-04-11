@@ -26,7 +26,7 @@ const Navbar = ({ onJournalButtonClick }) => {
               />
               {isAuthenticated && !loading && (
                 <p className="text-red-900">
-                  {currentUser.profile.currentStreak}
+                  {currentUser?.profile?.currentStreak}
                 </p>
               )}
             </div>
@@ -47,11 +47,11 @@ const Navbar = ({ onJournalButtonClick }) => {
                       Journal
                     </button>
                     {/* TODO implement profile page */}
-                    <Link to={routes.dash()}>
-                      <button className="h-10 w-20 rounded-md p-2 transition-all duration-150 ease-in-out hover:bg-red-100">
-                        Profile
-                      </button>
-                    </Link>
+                    {/* <Link to={routes.dash()}> */}
+                    {/* <button className="h-10 w-20 rounded-md p-2 transition-all duration-150 ease-in-out hover:bg-red-100"> */}
+                    {/* Profile */}
+                    {/* </button> */}
+                    {/* </Link> */}
                     <button
                       onClick={logOut}
                       className="h-10 w-20 rounded-md p-2 transition-all duration-150 ease-in-out hover:bg-red-100"
@@ -139,9 +139,9 @@ const Navbar = ({ onJournalButtonClick }) => {
                     <li>
                       <button onClick={onJournalButtonClick}>Journal</button>
                     </li>
-                    <li>
-                      <Link to={routes.dash()}>Profile</Link>
-                    </li>
+                    {/* <li> */}
+                    {/* <Link to={routes.dash()}>Profile</Link> */}
+                    {/* </li> */}
                     <li>
                       <button onClick={logOut}>Log Out</button>
                     </li>
