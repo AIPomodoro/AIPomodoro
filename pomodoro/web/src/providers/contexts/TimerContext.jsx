@@ -1,6 +1,7 @@
 import { useState, useEffect, createContext, useContext } from 'react'
 
 import { useMutation } from '@redwoodjs/web'
+import { toast } from '@redwoodjs/web/toast'
 
 import { useAuth } from 'src/auth'
 
@@ -112,6 +113,7 @@ const TimerContextProvider = ({ children }) => {
         },
       },
     })
+    toast('Saved!')
   }
 
   return (
