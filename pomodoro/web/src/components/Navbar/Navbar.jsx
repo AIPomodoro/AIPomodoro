@@ -29,12 +29,12 @@ const Navbar = ({ onJournalButtonClick }) => {
             </div>
             <div className="flex items-center space-x-4">
               <div className="hidden items-center space-x-4 md:block">
-                <button
+                {/* <button
                   onClick={() => setIsSettingsOpen(!isSettingsOpen)}
                   className="h-10 w-20 rounded-md p-2 transition-all duration-150 ease-in-out hover:bg-red-100"
                 >
                   Settings
-                </button>
+                </button> */}
                 {isAuthenticated ? (
                   <>
                     <button
