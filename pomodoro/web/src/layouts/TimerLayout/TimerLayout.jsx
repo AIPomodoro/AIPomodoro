@@ -77,7 +77,7 @@ const TimerLayout = ({ children }) => {
               email: userMetadata?.email,
               lastLogin: new Date(),
               lastDay: lastDay,
-              streak: streak,
+              currentStreak: streak,
             },
         }
       })
