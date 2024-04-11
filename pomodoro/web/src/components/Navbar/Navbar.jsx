@@ -15,7 +15,7 @@ const Navbar = ({ onJournalButtonClick }) => {
 
   return (
     <div>
-      <nav className="mb-4 bg-gray-800 text-white">
+      <nav className="mb-4 bg-red-50 text-red-800">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             <div className="flex items-center space-x-4">
@@ -25,13 +25,13 @@ const Navbar = ({ onJournalButtonClick }) => {
                 alt="Workflow"
               />
               {/* TODO implement streak */}
-              {isAuthenticated && <p>streak</p>}
+              {/* {isAuthenticated && <p>streak</p>} */}
             </div>
             <div className="flex items-center space-x-4">
               <div className="hidden items-center space-x-4 md:block">
                 <button
                   onClick={() => setIsSettingsOpen(!isSettingsOpen)}
-                  className="h-10 w-20 rounded-md p-2 transition-all duration-150 ease-in-out hover:bg-gray-500"
+                  className="h-10 w-20 rounded-md p-2 transition-all duration-150 ease-in-out hover:bg-red-100"
                 >
                   Settings
                 </button>
@@ -39,19 +39,19 @@ const Navbar = ({ onJournalButtonClick }) => {
                   <>
                     <button
                       onClick={onJournalButtonClick}
-                      className="h-10 w-20 rounded-md p-2 transition-all duration-150 ease-in-out hover:bg-gray-500"
+                      className="h-10 w-20 rounded-md p-2 transition-all duration-150 ease-in-out hover:bg-red-100"
                     >
                       Journal
                     </button>
                     {/* TODO implement profile page */}
                     <Link to={routes.dash()}>
-                      <button className="h-10 w-20 rounded-md p-2 transition-all duration-150 ease-in-out hover:bg-gray-500">
+                      <button className="h-10 w-20 rounded-md p-2 transition-all duration-150 ease-in-out hover:bg-red-100">
                         Profile
                       </button>
                     </Link>
                     <button
                       onClick={logOut}
-                      className="h-10 w-20 rounded-md p-2 transition-all duration-150 ease-in-out hover:bg-gray-500"
+                      className="h-10 w-20 rounded-md p-2 transition-all duration-150 ease-in-out hover:bg-red-100"
                     >
                       Log Out
                     </button>
@@ -59,7 +59,7 @@ const Navbar = ({ onJournalButtonClick }) => {
                 ) : (
                   <button
                     onClick={logIn}
-                    className="h-10 w-20 rounded-md p-2 transition-all duration-150 ease-in-out hover:bg-gray-500"
+                    className="h-10 w-20 rounded-md p-2 transition-all duration-150 ease-in-out hover:bg-red-100"
                   >
                     Log In
                   </button>
