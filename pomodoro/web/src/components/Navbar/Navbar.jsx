@@ -8,7 +8,7 @@ import { useTimerContext } from 'src/providers/contexts/TimerContext'
 import SettingsModal from '../SettingsModal/SettingsModal'
 
 const Navbar = ({ onJournalButtonClick }) => {
-  const { isAuthenticated, logIn, logOut } = useAuth()
+  const { isAuthenticated, currentUser, loading, logIn, logOut } = useAuth()
 
   const { isSettingsOpen, setIsSettingsOpen, isNavMenuOpen, setIsNavMenuOpen } =
     useTimerContext()
@@ -24,8 +24,7 @@ const Navbar = ({ onJournalButtonClick }) => {
                 src="https://upload.wikimedia.org/wikipedia/commons/6/6e/533-tomato.svg" //def change this
                 alt="Workflow"
               />
-              {/* TODO implement streak */}
-              {/* {isAuthenticated && <p>streak</p>} */}
+              {isAuthenticated && !loading && <p className="text-red-900">{currentUser.profile.currentStreak}</p>}
             </div>
             <div className="flex items-center space-x-4">
               <div className="hidden items-center space-x-4 md:block">
@@ -70,7 +69,7 @@ const Navbar = ({ onJournalButtonClick }) => {
                 <button
                   onClick={() => setIsNavMenuOpen(!isNavMenuOpen)}
                   type="button"
-                  className="inline-flex items-center justify-center rounded-md bg-gray-900 p-2 text-gray-400 hover:bg-gray-800 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                  className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-red-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                   aria-controls="mobile-menu"
                   aria-expanded="false"
                 >

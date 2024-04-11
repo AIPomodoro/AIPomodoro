@@ -73,6 +73,10 @@ const Profile = ({ profile }) => {
               <td>{timeTag(profile.lastLogin)}</td>
             </tr>
             <tr>
+              <th>Last day</th>
+              <td>{timeTag(profile.lastDay)}</td>
+            </tr>
+            <tr>
               <th>Current streak</th>
               <td>{profile.currentStreak}</td>
             </tr>

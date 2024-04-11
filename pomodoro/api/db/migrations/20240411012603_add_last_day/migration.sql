@@ -17,6 +17,7 @@ CREATE TABLE "Profile" (
     "lastName" TEXT,
     "phone" TEXT,
     "lastLogin" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "lastDay" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "currentStreak" INTEGER NOT NULL,
     "soundEnabled" BOOLEAN NOT NULL,
     "autoStart" BOOLEAN NOT NULL,
