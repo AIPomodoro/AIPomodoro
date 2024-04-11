@@ -48,6 +48,7 @@ const ProfilesList = ({ profiles }) => {
             <th>Last name</th>
             <th>Phone</th>
             <th>Last login</th>
+            <th>Last day</th>
             <th>Current streak</th>
             <th>Sound enabled</th>
             <th>Auto start</th>
@@ -68,6 +69,7 @@ const ProfilesList = ({ profiles }) => {
               <td>{truncate(profile.lastName)}</td>
               <td>{truncate(profile.phone)}</td>
               <td>{timeTag(profile.lastLogin)}</td>
+              <td>{timeTag(profile.lastDay)}</td>
               <td>{truncate(profile.currentStreak)}</td>
               <td>{checkboxInputTag(profile.soundEnabled)}</td>
               <td>{checkboxInputTag(profile.autoStart)}</td>

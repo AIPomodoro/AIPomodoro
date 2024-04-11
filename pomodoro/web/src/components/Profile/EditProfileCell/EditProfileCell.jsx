@@ -16,6 +16,7 @@ export const QUERY = gql`
       lastName
       phone
       lastLogin
+      lastDay
       currentStreak
       soundEnabled
       autoStart
@@ -37,6 +38,7 @@ const UPDATE_PROFILE_MUTATION = gql`
       lastName
       phone
       lastLogin
+      lastDay
       currentStreak
       soundEnabled
       autoStart

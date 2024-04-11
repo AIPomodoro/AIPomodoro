@@ -32,6 +32,7 @@ model Profile {
   phone          String?
   journalEntries JournalEntry[]
   lastLogin      DateTime       @default(now())
+  lastDay        DateTime       @default(now())
   currentStreak  Int
 
   // timer settings
