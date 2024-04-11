@@ -58,7 +58,7 @@ const TimerLayout = ({ children }) => {
       let streak;
       if (diff > 86400000) {
         //last login more than a day ago, reset streak
-        streak = 0
+        streak = 1
         lastDay = currentLogin
       } 
       else if (currentLogin.getDate() !== lastLogin.getDate()){
