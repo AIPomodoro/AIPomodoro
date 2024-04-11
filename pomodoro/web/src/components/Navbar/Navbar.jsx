@@ -24,7 +24,11 @@ const Navbar = ({ onJournalButtonClick }) => {
                 src="https://upload.wikimedia.org/wikipedia/commons/6/6e/533-tomato.svg" //def change this
                 alt="Workflow"
               />
-              {isAuthenticated && !loading && <p className="text-red-900">{currentUser.profile.currentStreak}</p>}
+              {isAuthenticated && !loading && (
+                <p className="text-red-900">
+                  {currentUser.profile.currentStreak}
+                </p>
+              )}
             </div>
             <div className="flex items-center space-x-4">
               <div className="hidden items-center space-x-4 md:block">
@@ -125,11 +129,11 @@ const Navbar = ({ onJournalButtonClick }) => {
           {(ref) => (
             <div className="md:hidden" id="mobile-menu">
               <ul ref={ref} className="space-y-2 px-2 pb-3 pt-2 sm:px-3">
-                <li>
-                  <button onClick={() => setIsSettingsOpen(!isSettingsOpen)}>
-                    Settings
-                  </button>
-                </li>
+                {/* <li> */}
+                {/* <button onClick={() => setIsSettingsOpen(!isSettingsOpen)}> */}
+                {/* Settings */}
+                {/* </button> */}
+                {/* </li> */}
                 {isAuthenticated ? (
                   <>
                     <li>
