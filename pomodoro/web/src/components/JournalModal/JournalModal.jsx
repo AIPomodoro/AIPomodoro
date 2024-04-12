@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import { useAuth } from 'src/auth'
 
-const JournalModal = ({ onClose, onSubmit, journalEntries }) => {
+const JournalModal = ({ onClose, pipeyCall, onSubmit, journalEntries }) => {
   const { currentUser } = useAuth()
   const [entry, setEntry] = useState('')
 
@@ -13,8 +13,11 @@ const JournalModal = ({ onClose, onSubmit, journalEntries }) => {
       title: 'Journal Entry',
       profileId: currentUser.profile.id,
     })
+    pipeyCall()
     onClose()
   }
+
+  const reversedJournalEntries = [...journalEntries].reverse();
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 p-4">
@@ -50,10 +53,10 @@ const JournalModal = ({ onClose, onSubmit, journalEntries }) => {
         </div>
 
         {/* Entries Display Section */}
-        <div className="flex-1 overflow-auto">
+        <div className="flex-1 overflow-auto" style={{ maxHeight: '500px' }}>
           <h3 className="mb-2 text-lg font-semibold">Past Entries</h3>
-          <div className="space-y-4">
-            {journalEntries.map((entry) => (
+          <div className="space-y-4 overflow-y-auto">
+            {reversedJournalEntries.map((entry) => (
               <div
                 key={entry.id}
                 className="rounded-lg border border-gray-200 bg-gray-50 p-4"
