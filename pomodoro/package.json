@@ -29,6 +29,7 @@
   "packageManager": "yarn@4.0.2",
   "dependencies": {
     "@headlessui/react": "^1.7.18",
+    "cross-fetch": "^4.0.0",
     "react-icons": "^5.0.1"
   }
 }

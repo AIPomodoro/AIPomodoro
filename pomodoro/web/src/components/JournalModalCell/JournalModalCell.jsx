@@ -26,7 +26,7 @@ const GET_JOURNAL_ENTRIES_BY_PROFILE_ID = gql`
   }
 `
 
-const JournalModalCell = ({ onClose }) => {
+const JournalModalCell = ({ onClose, pipeyCall }) => {
   const { loading, currentUser } = useAuth()
   if (loading) return null
 
@@ -44,6 +44,7 @@ const JournalModalCell = ({ onClose }) => {
 
   const handleEntrySubmit = async (entry) => {
     await createJournalEntry({ variables: { input: entry } })
+    pipeyCall()
     onClose()
   }
 
@@ -54,6 +55,7 @@ const JournalModalCell = ({ onClose }) => {
   return (
     <JournalModal
       onClose={onClose}
+      pipeyCall={pipeyCall}
       onSubmit={handleEntrySubmit}
       journalEntries={journalEntriesData?.profilesJournal}
     />

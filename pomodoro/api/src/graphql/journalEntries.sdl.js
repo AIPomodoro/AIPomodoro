@@ -43,5 +43,12 @@ export const schema = gql`
   #   profilesJournal: [ProfilesJournal!]! @requireAuth
   # }
 
+  type AIResponse {
+    id: Int!
+    response: String
+  }
 
+  extend type Query {
+    getJournalResponse(userId: Int!): AIResponse! @skipAuth
+  }
 `

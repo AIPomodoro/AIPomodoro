@@ -5,6 +5,7 @@ import { Toaster, toast } from '@redwoodjs/web/toast'
 
 import { useAuth } from 'src/auth'
 import JournalModalCell from 'src/components/JournalModalCell/JournalModalCell'
+import PipeyResponseCell from 'src/components/PipeyResponseCell/PipeyResponseCell'
 import Navbar from 'src/components/Navbar'
 
 import bell from '../../../assets/bell.wav'
@@ -86,15 +87,25 @@ const TimerLayout = ({ children }) => {
   }, [currentUser, isAuthenticated, userMetadata, updateProfile])
 
   const [isJournalOpen, setIsJournalOpen] = useState(false)
+  const [showAIResponse, setShowAIResponse] = useState(false)
 
   const toggleJournalModal = () => {
     setIsJournalOpen(!isJournalOpen)
   }
+
+  const journalSubmitted = () => {
+    setShowAIResponse(true)
+  }
+
+  const closeAIResponse = () => {
+    setShowAIResponse(false);
+  };
   return (
     <div className="bg-red-400 h-screen">
       <Toaster />
       <Navbar onJournalButtonClick={toggleJournalModal} />
-      {isJournalOpen && <JournalModalCell onClose={toggleJournalModal} />}
+      {isJournalOpen && <JournalModalCell onClose={toggleJournalModal} pipeyCall={journalSubmitted}/>}
+      {showAIResponse && <PipeyResponseCell onClose={closeAIResponse} userId={currentUser?.profile?.id} />}
       <main>{children}</main>
     </div>
   )
