@@ -8,6 +8,7 @@
   },
   "devDependencies": {
     "@redwoodjs/auth-auth0-setup": "7.0.2",
+    "@redwoodjs/cli-data-migrate": "7.0.2",
     "@redwoodjs/cli-storybook": "7.0.2",
     "@redwoodjs/core": "7.0.2",
     "@redwoodjs/realtime": "7.0.2",
