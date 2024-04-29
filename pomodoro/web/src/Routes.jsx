@@ -20,7 +20,7 @@ const Routes = () => {
       <Set wrap={TimerLayout}>
         <Route path="/" page={DashPage} name="dash" />
       </Set>
-      <Set wrap={ScaffoldLayout} title="Users" titleTo="users" buttonLabel="New User" buttonTo="newUser">
+      {/* <Set wrap={ScaffoldLayout} title="Users" titleTo="users" buttonLabel="New User" buttonTo="newUser">
         <Route path="/users/new" page={UserNewUserPage} name="newUser" />
         <Route path="/users/{id:Int}/edit" page={UserEditUserPage} name="editUser" />
         <Route path="/users/{id:Int}" page={UserUserPage} name="user" />
@@ -37,7 +37,7 @@ const Routes = () => {
         <Route path="/journal-entries/{id:Int}/edit" page={JournalEntryEditJournalEntryPage} name="editJournalEntry" />
         <Route path="/journal-entries/{id:Int}" page={JournalEntryJournalEntryPage} name="journalEntry" />
         <Route path="/journal-entries" page={JournalEntryJournalEntriesPage} name="journalEntries" />
-      </Set>
+      </Set> */}
       <Route notfound page={NotFoundPage} />
     </Router>
   )
