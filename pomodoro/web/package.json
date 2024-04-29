@@ -12,17 +12,17 @@
   },
   "dependencies": {
     "@auth0/auth0-spa-js": "^2",
-    "@redwoodjs/auth-auth0-web": "7.0.2",
-    "@redwoodjs/forms": "7.0.2",
-    "@redwoodjs/router": "7.0.2",
-    "@redwoodjs/web": "7.0.2",
+    "@redwoodjs/auth-auth0-web": "7.4.3",
+    "@redwoodjs/forms": "7.4.3",
+    "@redwoodjs/router": "7.4.3",
+    "@redwoodjs/web": "7.4.3",
     "humanize-string": "2.1.0",
     "prop-types": "15.8.1",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "@redwoodjs/vite": "7.0.2",
+    "@redwoodjs/vite": "7.4.3",
     "@types/react": "18.2.37",
     "@types/react-dom": "18.2.15",
     "autoprefixer": "^10.4.17",
